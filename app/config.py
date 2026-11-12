@@ -14,7 +14,7 @@ load_dotenv(BASE_DIR / ".env")
 # Available options: "offline" (zero-dependency local), "gemini" (Google Gemini API), "ollama" (Local Ollama)
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "offline").lower().strip()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash").strip()
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite").strip()
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate").strip()
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2").strip()

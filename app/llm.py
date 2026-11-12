@@ -55,11 +55,16 @@ def format_context_prompt(query: str, retrieved_chunks: List[Dict[str, Any]]) ->
 
 
 def call_gemini_api(prompt: str, system_instruction: str = SYSTEM_INSTRUCTION) -> Tuple[str, str]:
-    """Call Google Gemini REST API free tier."""
+    """Call Google Gemini REST API free tier with automatic model fallback."""
     if not GEMINI_API_KEY:
         raise ValueError("GEMINI_API_KEY is not configured in .env or environment.")
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={GEMINI_API_KEY}"
+    candidate_models = [GEMINI_MODEL]
+    if "gemini-3.1-flash-lite" not in candidate_models:
+        candidate_models.append("gemini-3.1-flash-lite")
+    if "gemini-flash-lite-latest" not in candidate_models:
+        candidate_models.append("gemini-flash-lite-latest")
+
     payload = {
         "contents": [
             {
@@ -76,16 +81,26 @@ def call_gemini_api(prompt: str, system_instruction: str = SYSTEM_INSTRUCTION) -
         }
     }
 
-    resp = requests.post(url, json=payload, timeout=20)
-    resp.raise_for_status()
-    data = resp.json()
-    candidates = data.get("candidates", [])
-    if candidates and "content" in candidates[0]:
-        parts = candidates[0]["content"].get("parts", [])
-        if parts and "text" in parts[0]:
-            return parts[0]["text"].strip(), f"Google Gemini ({GEMINI_MODEL})"
+    last_error = None
+    for model_name in candidate_models:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={GEMINI_API_KEY}"
+        try:
+            resp = requests.post(url, json=payload, timeout=20)
+            if resp.status_code == 200:
+                data = resp.json()
+                candidates = data.get("candidates", [])
+                if candidates and "content" in candidates[0]:
+                    parts = candidates[0]["content"].get("parts", [])
+                    if parts and "text" in parts[0]:
+                        return parts[0]["text"].strip(), f"Google Gemini ({model_name})"
+            else:
+                last_error = f"Model {model_name} returned HTTP {resp.status_code}: {resp.text[:120]}"
+                logger.warning("Gemini model %s failed, attempting next candidate: %s", model_name, last_error)
+        except Exception as e:
+            last_error = str(e)
+            logger.warning("Exception calling Gemini model %s: %s", model_name, e)
 
-    raise RuntimeError("No candidate text returned by Gemini API")
+    raise RuntimeError(f"All Gemini models exhausted. Last error: {last_error}")
 
 
 def call_ollama_api(prompt: str, system_instruction: str = SYSTEM_INSTRUCTION) -> Tuple[str, str]:
