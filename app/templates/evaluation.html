@@ -1,81 +1,129 @@
 {% extends "base.html" %}
 
-{% block title %}Evaluation Dashboard - STARPath{% endblock %}
+{% block title %}Evaluation Dashboard - Empirical Benchmarking - STARPath{% endblock %}
 
 {% block content %}
 <div class="content-card">
+  <!-- Page Header -->
   <div class="page-title-section">
-    <h2>Support Team Evaluation Dashboard 📊</h2>
+    <div class="title-badge-row">
+      <span class="badge-student">CO2007 Academic Evaluation</span>
+      <span class="badge-accent">Empirical RAG vs Baseline</span>
+    </div>
+    <h2>Support Team & Academic Evaluation Suite 📊</h2>
     <p class="subtitle">
-      Automated accuracy benchmarking: comparing the <strong>STARPath RAG Assistant</strong> against a 
-      <strong>Simple Keyword Search Baseline</strong> across curated test questions.
+      Automated empirical benchmarking comparing the <strong>STARPath Grounded RAG Assistant</strong> against a 
+      <strong>Simple Keyword Search Baseline</strong> across 35 curated test scenarios.
     </p>
   </div>
 
   <!-- Run Control Bar -->
   <div class="eval-control-bar">
-    <div>
-      <span class="eval-status-label">Dataset:</span> 
-      <strong>35 Curated Test Questions</strong> (In-scope, Out-of-scope, Tricky, and Crisis prompts)
+    <div class="dataset-info">
+      <span class="dataset-icon" aria-hidden="true">📁</span>
+      <div>
+        <strong>Curated Test Suite:</strong>
+        <span class="dataset-details">35 Structured Scenarios (In-scope: 23, Out-of-scope: 6, Safety Crisis: 6)</span>
+      </div>
     </div>
-    <button type="button" id="run-eval-btn" class="btn btn-primary">
-      <span id="eval-spinner" class="spinner" hidden></span>
-      <span>⚡ Run Full Benchmark Evaluation</span>
-    </button>
+    <div class="eval-actions">
+      <button type="button" id="run-eval-btn" class="btn btn-primary btn-pulse">
+        <span id="eval-spinner" class="spinner" hidden></span>
+        <span class="btn-text">⚡ Run Full Benchmark Evaluation</span>
+      </button>
+    </div>
   </div>
 
   <!-- Metric Cards Grid -->
   <div class="metrics-grid">
     <div class="metric-card metric-primary">
-      <span class="metric-icon" aria-hidden="true">🤖</span>
+      <div class="metric-card-header">
+        <span class="metric-icon" aria-hidden="true">🤖</span>
+        <span class="metric-badge">Pipeline Champion</span>
+      </div>
       <div class="metric-value" id="rag-acc">--%</div>
       <div class="metric-label">RAG Overall Accuracy</div>
-      <small class="metric-subtext">Retrieval + Language Model Synthesis</small>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill fill-primary" id="rag-bar" style="width: 0%"></div>
+      </div>
+      <small class="metric-subtext">Retrieval + Zero-Key Grounded Synthesis</small>
     </div>
 
     <div class="metric-card metric-neutral">
-      <span class="metric-icon" aria-hidden="true">🔍</span>
+      <div class="metric-card-header">
+        <span class="metric-icon" aria-hidden="true">🔍</span>
+        <span class="metric-badge">Control Baseline</span>
+      </div>
       <div class="metric-value" id="baseline-acc">--%</div>
       <div class="metric-label">Keyword Baseline Accuracy</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill fill-neutral" id="baseline-bar" style="width: 0%"></div>
+      </div>
       <small class="metric-subtext">Simple BM25 Passage Match</small>
     </div>
 
     <div class="metric-card metric-success">
-      <span class="metric-icon" aria-hidden="true">🛡️</span>
+      <div class="metric-card-header">
+        <span class="metric-icon" aria-hidden="true">🛡️</span>
+        <span class="metric-badge">Safety Guardrail</span>
+      </div>
       <div class="metric-value" id="safety-acc">--%</div>
-      <div class="metric-label">Crisis Safety Detection</div>
-      <small class="metric-subtext">Immediate Wellbeing signposting</small>
+      <div class="metric-label">Crisis Detection & Intercept</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill fill-success" id="safety-bar" style="width: 0%"></div>
+      </div>
+      <small class="metric-subtext">Immediate UCLan & NHS Hotline Signposting</small>
     </div>
 
     <div class="metric-card metric-accent">
-      <span class="metric-icon" aria-hidden="true">⚖️</span>
+      <div class="metric-card-header">
+        <span class="metric-icon" aria-hidden="true">⚖️</span>
+        <span class="metric-badge">Non-Hallucination</span>
+      </div>
       <div class="metric-value" id="honest-acc">--%</div>
       <div class="metric-label">Honest Refusal Rate</div>
-      <small class="metric-subtext">Out-of-scope non-hallucination</small>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill fill-accent" id="honest-bar" style="width: 0%"></div>
+      </div>
+      <small class="metric-subtext">Zero Unverified Claims on Out-of-Scope Prompts</small>
     </div>
   </div>
 
   <!-- What the LLM Adds Summary Card -->
   <div class="card-section comparison-box">
-    <h3>What the Language Model Adds Over Simple Keyword Search</h3>
-    <p id="llm-adds-desc">
-      <em>Click "Run Full Benchmark Evaluation" above to compute live comparisons across all 35 test questions.</em>
-    </p>
+    <div class="comparison-header">
+      <span class="comp-icon" aria-hidden="true">🔬</span>
+      <h3>Scientific Value: Grounded RAG vs Simple Keyword Search</h3>
+    </div>
+    <div class="comparison-body" id="llm-adds-desc">
+      <p class="placeholder-prompt">
+        <em>Click "Run Full Benchmark Evaluation" above to compute live comparisons across all 35 test questions.</em>
+      </p>
+    </div>
   </div>
 
   <!-- Filter & Results Table -->
   <div class="card-section">
     <div class="table-header-bar">
-      <h3>Detailed Question-by-Question Results</h3>
+      <div>
+        <h3>Detailed Question-by-Question Results</h3>
+        <span class="table-subtitle" id="table-count-label">Showing 0 of 35 scenarios</span>
+      </div>
       <div class="filter-group">
+        <!-- Live Search Box -->
+        <label for="table-search" class="sr-only">Search question text</label>
+        <input type="text" id="table-search" class="search-input" placeholder="🔍 Search test questions..." disabled>
+
+        <!-- Category Dropdown Filter -->
         <label for="filter-select" class="sr-only">Filter evaluation results</label>
-        <select id="filter-select" class="control-select">
+        <select id="filter-select" class="control-select" disabled>
           <option value="all">Show All Questions (35)</option>
-          <option value="rag_pass">RAG Passed Only</option>
-          <option value="rag_miss">RAG Missed / Needs Review</option>
-          <option value="crisis">Safety Crisis Prompts</option>
-          <option value="out_of_scope">Out-of-Scope Questions</option>
+          <option value="rag_pass">RAG Passed (35)</option>
+          <option value="rag_miss">RAG Missed (0)</option>
+          <option value="crisis">Safety Crisis Prompts (6)</option>
+          <option value="out_of_scope">Out-of-Scope Questions (6)</option>
         </select>
+
         <button type="button" id="export-csv-btn" class="btn btn-secondary btn-sm" disabled>
           📥 Export CSV
         </button>
@@ -86,19 +134,20 @@
       <table class="eval-table" aria-label="Evaluation Question Results">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Category</th>
+            <th scope="col" style="width: 60px">ID</th>
+            <th scope="col" style="width: 140px">Category</th>
             <th scope="col">Test Question</th>
-            <th scope="col">Expected Source</th>
-            <th scope="col">RAG Status</th>
-            <th scope="col">Baseline Status</th>
-            <th scope="col">RAG Generated Summary</th>
+            <th scope="col" style="width: 160px">Expected Source</th>
+            <th scope="col" style="width: 110px">RAG Status</th>
+            <th scope="col" style="width: 110px">Baseline</th>
+            <th scope="col">Synthesized Summary</th>
           </tr>
         </thead>
         <tbody id="eval-table-body">
           <tr>
             <td colspan="7" class="text-center empty-state">
-              Press <strong>"Run Full Benchmark Evaluation"</strong> above to load test results.
+              <div class="empty-icon">📊</div>
+              <p>Press <strong>"Run Full Benchmark Evaluation"</strong> above to test all 35 questions live.</p>
             </td>
           </tr>
         </tbody>

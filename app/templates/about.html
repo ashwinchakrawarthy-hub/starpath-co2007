@@ -4,110 +4,210 @@
 
 {% block content %}
 <div class="content-card">
+  <!-- Page Header -->
   <div class="page-title-section">
-    <h2>Student Ambassador Sharing & Project Information ⭐</h2>
+    <div class="title-badge-row">
+      <span class="badge-student">BSc (Hons) AI & Data Science Project</span>
+      <span class="badge-accent">CO2007 The Agile Professional</span>
+    </div>
+    <h2>Student Ambassador Toolkit & Project Philosophy ⭐</h2>
     <p class="subtitle">
-      Tools and materials for Student Wellbeing Ambassadors (SWAs) to signpost incoming offer-holders to STARPath.
+      Designed for Student Wellbeing Ambassadors (SWAs), campus peer mentors, and inclusive support teams to introduce incoming offer-holders to STARPath.
     </p>
   </div>
 
   <div class="grid-two-col">
-    <!-- Left Column: Guidelines & Ethical Boundaries -->
+    <!-- Left Column: Guidelines, Personas & Development Journey -->
     <div class="card-section">
-      <h3>About the STARPath Assistant</h3>
+      <h3>Why We Built STARPath</h3>
       <p>
-        <strong>STARPath</strong> is a specialized proof-of-concept question-and-answer assistant built by an Agile student development team for <strong>CO2007 The Agile Professional</strong> at the University of Central Lancashire.
+        The transition from school or college to university is one of the most critical inflection points in higher education. 
+        For students with disabilities, ADHD, autism, dyslexia, or mental health conditions, this transition is often clouded by 
+        deep anxiety about accommodation privacy, sensory noise, exam adjustments, and campus navigation.
       </p>
       
-      <h4>What STARPath Does:</h4>
-      <ul class="bullet-list">
-        <li><strong>Answers Common Questions:</strong> Provides direct answers to recurring questions about the 3-day summer residential, accessible halls, and disability support.</li>
-        <li><strong>Shows Source Citations:</strong> Every answer clearly shows the official UCLan web page and section it came from so students can verify details.</li>
-        <li><strong>Plain-English Glossary:</strong> Explains confusing UK university terms (like <em>ISP</em>, <em>DSA</em>, or <em>En-suite</em>) in simple words for international students.</li>
-        <li><strong>Guaranteed Honesty:</strong> If an answer is not in the official pages, it says so directly rather than guessing or making things up.</li>
-        <li><strong>Crisis Safety:</strong> Automatically routes any student expressing distress or self-harm to the UCLan Wellbeing Service and emergency human support.</li>
-      </ul>
+      <!-- Student Persona Showcase -->
+      <div class="persona-section">
+        <h4>Meet the Students We Built This For:</h4>
+        
+        <div class="persona-card">
+          <div class="persona-header">
+            <span class="persona-avatar">🎧</span>
+            <div>
+              <strong>Leo</strong> · <em>ADHD & Sensory Sensitivity</em>
+            </div>
+          </div>
+          <p class="persona-quote">
+            "I was terrified about dining hall noise and communal flat living. STARPath showed me the quiet flats in Roeburn Hall and the calm sensory room in Harrington within 10 seconds."
+          </p>
+        </div>
 
+        <div class="persona-card">
+          <div class="persona-header">
+            <span class="persona-avatar">♿</span>
+            <div>
+              <strong>Maya</strong> · <em>Wheelchair User & Mobility Needs</em>
+            </div>
+          </div>
+          <p class="persona-quote">
+            "I needed to know exact details about roll-in wet rooms, accessible lifts, and how to get an Inclusive Support Plan. STARPath gave me verified links to the exact disability support pages."
+          </p>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <span class="persona-avatar">🌍</span>
+            <div>
+              <strong>Jordan</strong> · <em>First-Generation Offer-Holder</em>
+            </div>
+          </div>
+          <p class="persona-quote">
+            "UK university acronyms like ISP, DSA, and en-suite were baffling to me. The plain-English button translated everything into simple words without making me feel embarrassed."
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Architectural Pillars -->
+      <h4>Four Engineering Commitments:</h4>
+      <div class="commitments-grid">
+        <div class="commit-item">
+          <span class="commit-icon">🔒</span>
+          <strong>Zero Personal Data Logged</strong>
+          <p>Names, UK phone numbers, and student IDs are wiped via deterministic regex before any search.</p>
+        </div>
+        <div class="commit-item">
+          <span class="commit-icon">🛡️</span>
+          <strong>Deterministic Crisis Guardrail</strong>
+          <p>Expressions of distress bypass search entirely and immediately signpost 5 UK & UCLan emergency services.</p>
+        </div>
+        <div class="commit-item">
+          <span class="commit-icon">⚖️</span>
+          <strong>Zero Fabrication / Non-Hallucination</strong>
+          <p>If information is not present in approved UCLan documents, STARPath gives an honest refusal.</p>
+        </div>
+        <div class="commit-item">
+          <span class="commit-icon">👁️</span>
+          <strong>WCAG 2.2 AA Accessibility</strong>
+          <p>14:1+ High contrast mode, OpenDyslexic typography, Web Speech read-aloud, and keyboard navigation.</p>
+        </div>
+      </div>
+
+      <!-- Ethical Disclaimer -->
       <div class="alert-box ethics-alert" role="note">
         <h4>⚠️ Academic Prototype Notice</h4>
         <p>
-          As specified in the university assignment brief, this software is a <strong>student research prototype</strong>. 
-          It has been tested exclusively with enrolled module students and academic tutors. 
-          It is <strong>not</strong> deployed to real incoming offer-holders on the live STAR residential without formal institutional ethics approval.
+          As specified in the university assignment brief for <strong>CO2007</strong>, this software is an academic proof-of-concept. 
+          It has been empirically benchmarked and tested with enrolled students and academic tutors. 
+          It operates alongside—never replacing—compassionate human student ambassadors.
         </p>
       </div>
     </div>
 
-    <!-- Right Column: Printable Ambassador Card Mock-up -->
+    <!-- Right Column: Interactive Printable Ambassador Card & Sharing Kit -->
     <div class="card-section">
-      <h3>Ambassador Printable Card Mock-Up</h3>
-      <p>Student Wellbeing Ambassadors can hand out this A5 card mock-up or display it on registration desks:</p>
+      <h3>Ambassador Printable Card & Desk Display</h3>
+      <p>Student Wellbeing Ambassadors can print this card or display it on check-in desks during the STAR residential:</p>
 
-      <div class="printable-card" id="printable-card">
-        <div class="prototype-watermark" aria-hidden="true">PROTOTYPE DEMO ONLY</div>
-        
-        <div class="print-card-header">
-          <span class="print-logo" aria-hidden="true">⭐</span>
-          <div>
-            <h4>UCLan STAR Programme</h4>
-            <p><strong>Ask STARPath: Your 24/7 Transition Assistant</strong></p>
-          </div>
+      <!-- Realistic Lanyard / Desk Card Mock-up -->
+      <div class="lanyard-container">
+        <!-- Lanyard Strap & Clip Graphic -->
+        <div class="lanyard-clip" aria-hidden="true">
+          <div class="clip-ring"></div>
+          <div class="clip-hook"></div>
         </div>
 
-        <div class="print-card-body">
-          <div class="qr-container">
-            <!-- Inline SVG QR Code Representation -->
-            <svg class="qr-code-svg" viewBox="0 0 100 100" width="130" height="130" aria-label="QR Code link to STARPath">
-              <rect width="100" height="100" fill="#ffffff"/>
-              <!-- Position markers -->
-              <rect x="5" y="5" width="30" height="30" fill="#002147"/>
-              <rect x="10" y="10" width="20" height="20" fill="#ffffff"/>
-              <rect x="15" y="15" width="10" height="10" fill="#002147"/>
-              
-              <rect x="65" y="5" width="30" height="30" fill="#002147"/>
-              <rect x="70" y="10" width="20" height="20" fill="#ffffff"/>
-              <rect x="75" y="15" width="10" height="10" fill="#002147"/>
-              
-              <rect x="5" y="65" width="30" height="30" fill="#002147"/>
-              <rect x="10" y="70" width="20" height="20" fill="#ffffff"/>
-              <rect x="15" y="75" width="10" height="10" fill="#002147"/>
-              
-              <!-- Pattern matrix -->
-              <rect x="42" y="10" width="6" height="6" fill="#002147"/>
-              <rect x="52" y="10" width="6" height="6" fill="#002147"/>
-              <rect x="42" y="24" width="16" height="6" fill="#002147"/>
-              <rect x="10" y="42" width="20" height="6" fill="#002147"/>
-              <rect x="40" y="40" width="20" height="20" fill="#d71920"/>
-              <rect x="46" y="46" width="8" height="8" fill="#ffffff"/>
-              <rect x="70" y="42" width="18" height="6" fill="#002147"/>
-              <rect x="10" y="52" width="6" height="6" fill="#002147"/>
-              <rect x="70" y="52" width="12" height="6" fill="#002147"/>
-              <rect x="42" y="70" width="12" height="6" fill="#002147"/>
-              <rect x="62" y="70" width="12" height="6" fill="#002147"/>
-              <rect x="42" y="82" width="30" height="6" fill="#002147"/>
-            </svg>
-            <p class="qr-caption"><small>Scan with your phone camera to start asking questions</small></p>
+        <div class="printable-card" id="printable-card">
+          <!-- Academic Prototype Watermark -->
+          <div class="prototype-watermark" aria-hidden="true">PROTOTYPE DEMO ONLY</div>
+          
+          <!-- Holographic Security Bar -->
+          <div class="holo-bar" aria-hidden="true"></div>
+          
+          <div class="print-card-header">
+            <div class="print-brand-group">
+              <span class="print-logo" aria-hidden="true">⭐</span>
+              <div>
+                <h4 class="print-title">UCLan STAR Programme</h4>
+                <p class="print-subtitle">Student Transition & Residential Assistant</p>
+              </div>
+            </div>
+            <span class="print-badge">Official Guide</span>
           </div>
 
-          <div class="print-tips">
-            <h5>3 Easy Tips for Students:</h5>
-            <ol>
-              <li><strong>It's 100% Free & Anonymous:</strong> You do not need to log in or enter your name.</li>
-              <li><strong>Check the Sources:</strong> Click any source link under the answer to read the full university page.</li>
-              <li><strong>Tap for Plain English:</strong> If any word looks unfamiliar, tap it to see what it means in plain English.</li>
-            </ol>
-          </div>
-        </div>
+          <div class="print-card-body">
+            <div class="qr-container">
+              <!-- Inline SVG QR Code Representation -->
+              <svg class="qr-code-svg" viewBox="0 0 100 100" width="130" height="130" aria-label="QR Code to scan for STARPath Assistant">
+                <rect width="100" height="100" fill="#ffffff"/>
+                <!-- Position markers -->
+                <rect x="5" y="5" width="30" height="30" fill="#002147"/>
+                <rect x="10" y="10" width="20" height="20" fill="#ffffff"/>
+                <rect x="15" y="15" width="10" height="10" fill="#002147"/>
+                
+                <rect x="65" y="5" width="30" height="30" fill="#002147"/>
+                <rect x="70" y="10" width="20" height="20" fill="#ffffff"/>
+                <rect x="75" y="15" width="10" height="10" fill="#002147"/>
+                
+                <rect x="5" y="65" width="30" height="30" fill="#002147"/>
+                <rect x="10" y="70" width="20" height="20" fill="#ffffff"/>
+                <rect x="15" y="75" width="10" height="10" fill="#002147"/>
+                
+                <!-- Pattern matrix -->
+                <rect x="42" y="10" width="6" height="6" fill="#002147"/>
+                <rect x="52" y="10" width="6" height="6" fill="#002147"/>
+                <rect x="42" y="24" width="16" height="6" fill="#002147"/>
+                <rect x="10" y="42" width="20" height="6" fill="#002147"/>
+                <rect x="40" y="40" width="20" height="20" fill="#d71920"/>
+                <rect x="46" y="46" width="8" height="8" fill="#ffffff"/>
+                <rect x="70" y="42" width="18" height="6" fill="#002147"/>
+                <rect x="10" y="52" width="6" height="6" fill="#002147"/>
+                <rect x="70" y="52" width="12" height="6" fill="#002147"/>
+                <rect x="42" y="70" width="12" height="6" fill="#002147"/>
+                <rect x="62" y="70" width="12" height="6" fill="#002147"/>
+                <rect x="42" y="82" width="30" height="6" fill="#002147"/>
+              </svg>
+              <p class="qr-caption"><small>Scan with phone camera</small></p>
+            </div>
 
-        <div class="print-card-footer">
-          <small>Need urgent human support? Contact UCLan Wellbeing on <strong>01772 893020</strong> or email <strong>wellbeing@uclan.ac.uk</strong>.</small>
+            <div class="print-tips">
+              <h5>⭐ Ask STARPath on Your Phone:</h5>
+              <ul class="print-perks">
+                <li><strong>100% Free & Anonymous:</strong> No log-in required.</li>
+                <li><strong>Verified Answers:</strong> Sourced directly from approved UCLan pages.</li>
+                <li><strong>Plain-English Glossary:</strong> Clarifies complex university terms.</li>
+                <li><strong>Speech & Dyslexia Modes:</strong> Designed for accessibility.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="print-card-footer">
+            <div class="emergency-strip">
+              <span>🚨 Urgent Human Support:</span>
+              <strong>UCLan Wellbeing: 01772 893020</strong> · 
+              <strong>Security: 01772 892068</strong>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="print-action-bar">
-        <button type="button" class="btn btn-secondary" onclick="window.print()">
-          🖨️ Print Card Mock-Up
+      <!-- Action Buttons Bar -->
+      <div class="ambassador-action-bar">
+        <button type="button" class="btn btn-primary" onclick="window.print()">
+          🖨️ Print Desk Display / Flyer
         </button>
+        <button type="button" class="btn btn-secondary" id="copy-share-url-btn">
+          🔗 Copy Assistant Link
+        </button>
+      </div>
+
+      <!-- Quick Ambassador Tips Card -->
+      <div class="sidebar-card sward-tips-card">
+        <h4>💡 Ambassador Signposting Tips:</h4>
+        <ol class="sward-tips-list">
+          <li><strong>During Check-in:</strong> Encourage anxious parents and offer-holders to scan the card while waiting at Harrington Hall.</li>
+          <li><strong>Overnight Concerns:</strong> Point students to the "Halls & Living" questions to reassure them about room locks and quiet flats.</li>
+          <li><strong>ISP Queries:</strong> Remind students that STARPath links directly to the official disability evidence submission form.</li>
+        </ol>
       </div>
     </div>
   </div>

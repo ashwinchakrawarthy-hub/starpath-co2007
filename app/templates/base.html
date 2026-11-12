@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{{ app_name }} - {{ app_subtitle }}{% endblock %}</title>
-  <meta name="description" content="Accessible, privacy-first Q&A assistant for UCLan STAR Programme offer-holders. Grounded RAG with source citations.">
+  <meta name="description" content="Accessible, privacy-first Q&A assistant for UCLan STAR Programme offer-holders. Developed by BSc (Hons) AI & Data Science students.">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
 </head>
@@ -15,37 +15,73 @@
   <!-- ARIA Live Region for Screen Readers -->
   <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- Header -->
+  <!-- Peer Student Project Banner -->
+  <div class="student-project-banner" role="complementary" aria-label="Student project banner">
+    <div class="banner-inner">
+      <div class="banner-team">
+        <span class="badge-student">🎓 Student-Built Innovation</span>
+        <span class="banner-text">CO2007 Agile Team Project · <strong>BSc (Hons) AI & Data Science</strong> (UCLan 2026/27)</span>
+      </div>
+      <div class="banner-meta">
+        <span class="campus-location"><span class="pulse-dot" aria-hidden="true"></span> 📍 Preston Campus · STAR Residential Aug 2027</span>
+        <span class="team-avatars" title="Team 4: Ashwin (Lead), Savi (PO), Golem (AI Architect), Hafsah (UI/UX)">
+          <span class="avatar-pill" title="Ashwin Chakrawarthy - Team Lead">AC</span>
+          <span class="avatar-pill" title="Savi Singh - Product Owner">SS</span>
+          <span class="avatar-pill" title="Md Mahin (Golem) - AI Architect">MM</span>
+          <span class="avatar-pill" title="Hafsah Afzal - UI/UX & QA">HA</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
   <header class="app-header" role="banner">
     <div class="header-inner">
-      <div class="brand">
-        <span class="brand-logo" aria-hidden="true">⭐</span>
-        <div class="brand-text">
-          <h1 class="brand-title">{{ app_name }}</h1>
-          <p class="brand-subtitle">{{ app_subtitle }} · <span class="tag-uclan">UCLan Inclusive Support</span></p>
+      <!-- Brand Logo & Title -->
+      <a href="/" class="brand-link" aria-label="STARPath Home">
+        <div class="brand">
+          <div class="brand-logo-container">
+            <span class="brand-logo" aria-hidden="true">⭐</span>
+            <div class="logo-glow" aria-hidden="true"></div>
+          </div>
+          <div class="brand-text">
+            <div class="title-row">
+              <h1 class="brand-title">{{ app_name }}</h1>
+              <span class="version-tag">v1.0 Ready</span>
+            </div>
+            <p class="brand-subtitle">{{ app_subtitle }} · <span class="tag-uclan">Inclusive Support</span></p>
+          </div>
         </div>
-      </div>
+      </a>
 
       <!-- Navigation -->
       <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <a href="/" class="nav-link {% if request.url.path == '/' %}active{% endif %}">
-          <span aria-hidden="true">💬</span> Assistant
+          <span class="nav-icon" aria-hidden="true">💬</span>
+          <span>Assistant</span>
         </a>
         <a href="/about" class="nav-link {% if request.url.path == '/about' %}active{% endif %}">
-          <span aria-hidden="true">ℹ️</span> About & Share
+          <span class="nav-icon" aria-hidden="true">🤝</span>
+          <span>About & Ambassadors</span>
         </a>
         <a href="/evaluation" class="nav-link {% if request.url.path == '/evaluation' %}active{% endif %}">
-          <span aria-hidden="true">📊</span> Evaluation Dashboard
+          <span class="nav-icon" aria-hidden="true">📊</span>
+          <span>Evaluation Dashboard</span>
         </a>
       </nav>
 
       <!-- Accessibility Toolbar -->
-      <div class="accessibility-controls" aria-label="Accessibility Settings">
+      <div class="accessibility-controls" aria-label="Accessibility & Comfort Settings">
+        <!-- Audio Chime Toggle -->
+        <button id="sound-toggle" class="control-btn" type="button" aria-pressed="false" title="Toggle audio chime feedback">
+          <span aria-hidden="true">🔔</span> Sound
+        </button>
+
         <!-- Theme Picker -->
         <label for="theme-select" class="sr-only">Display Theme</label>
         <select id="theme-select" class="control-select" title="Choose display theme for vision comfort">
-          <option value="default">🎨 Theme: Default</option>
-          <option value="high-contrast">👁️ High Contrast (Black/Yellow)</option>
+          <option value="default">🎨 Theme: UCLan Classic</option>
+          <option value="high-contrast">👁️ High Contrast (AAA 14:1)</option>
           <option value="colorblind">🔷 Colour-Blind Safe</option>
           <option value="dark">🌙 Dark Mode</option>
         </select>
@@ -53,9 +89,9 @@
         <!-- Font Size Picker -->
         <label for="font-size-select" class="sr-only">Text Size</label>
         <select id="font-size-select" class="control-select" title="Adjust text size">
-          <option value="small">A- Small Text</option>
-          <option value="medium" selected>A Standard Text</option>
-          <option value="large">A+ Large Text</option>
+          <option value="small">A- Small</option>
+          <option value="medium" selected>A Standard</option>
+          <option value="large">A+ Large</option>
           <option value="xlarge">A++ Extra Large</option>
         </select>
 
@@ -72,18 +108,54 @@
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Footer -->
+  <!-- Human-Centred Footer -->
   <footer class="app-footer" role="contentinfo">
     <div class="footer-inner">
-      <p>
-        <strong>STARPath</strong> — CO2007 Agile Team Project (BSc AI & Data Science 2026/27).
-        Developed by <em>Ashwin, Savi, Golem, and Hafsa</em>.
-      </p>
-      <p class="footer-disclaimer">
-        🔒 <strong>Privacy Guarantee:</strong> Questions are processed anonymously with zero personal data logged. 
-        Answers are grounded exclusively in approved UCLan public pages (Snapshot date: 12 Nov 2026).
-        For personal support, contact <a href="mailto:inclusivesupport@uclan.ac.uk">inclusivesupport@uclan.ac.uk</a>.
-      </p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="brand-logo-small">⭐</span>
+            <strong>STARPath</strong>
+          </div>
+          <p class="footer-desc">
+            An accessible, human-centred AI companion built by undergraduate students to empower disabled, neurodivergent, and anxious offer-holders transitioning to university.
+          </p>
+          <div class="footer-badges">
+            <span class="pill-mini">WCAG 2.2 AA</span>
+            <span class="pill-mini">Zero PII Log</span>
+            <span class="pill-mini">100% Grounded</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Agile Student Team</h4>
+          <ul class="footer-team-list">
+            <li><strong>Ashwin Chakrawarthy</strong> · Scrum Lead & Git</li>
+            <li><strong>Savi Singh</strong> · Product Owner & Requirements</li>
+            <li><strong>Md Mahin (Golem)</strong> · Grounded AI Architect</li>
+            <li><strong>Hafsah Afzal</strong> · UI/UX & QA Engineer</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Immediate Human Support</h4>
+          <p class="footer-support-text">
+            STARPath never replaces compassionate human care. If you need assistance:
+          </p>
+          <ul class="footer-contact-list">
+            <li><strong>Inclusive Support:</strong> <a href="mailto:inclusivesupport@uclan.ac.uk">inclusivesupport@uclan.ac.uk</a></li>
+            <li><strong>Student Wellbeing:</strong> 01772 893020</li>
+            <li><strong>24/7 Campus Security:</strong> 01772 892068</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026/27 <strong>Group 4 (Agile STAR)</strong> · CO2007 The Agile Professional · University of Central Lancashire.
+          Grounding source snapshot: 12 Nov 2026.
+        </p>
+      </div>
     </div>
   </footer>
 
