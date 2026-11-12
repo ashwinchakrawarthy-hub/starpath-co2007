@@ -1,0 +1,8 @@
+{
+  "collection_date": "2026-11-12",
+  "snapshot_version": "1.0.0",
+  "approved_source": "UCLan Public Approved Pages List (Blackboard CO2007)",
+  "total_sources": 8,
+  "collection_method": "Polite curated snapshot with request throttling; offline repository copy",
+  "description": "Static dated knowledge base copy for the STARPath assistant to prevent live website drift, as required by the assignment brief rules."
+}

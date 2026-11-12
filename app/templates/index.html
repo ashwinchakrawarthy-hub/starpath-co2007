@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}STARPath - Accessible Q&A Assistant{% endblock %}
+
+{% block content %}
+<div class="chat-layout">
+  <!-- Left Side: Information & Quick Guide -->
+  <aside class="chat-sidebar" aria-label="STAR Programme Quick Facts">
+    <div class="sidebar-card intro-card">
+      <h2>Welcome to STARPath ⭐</h2>
+      <p>
+        Ask questions about UCLan's <strong>Student Transition and Residential (STAR) programme</strong>, 
+        free 3-day summer stays, adapted accommodation, and disability support.
+      </p>
+      <div class="privacy-badge" role="status">
+        <span aria-hidden="true">🛡️</span> <strong>100% Anonymous:</strong> Personal details (names, emails, phone numbers) are stripped automatically before answering.
+      </div>
+    </div>
+
+    <!-- Suggested Quick Prompts -->
+    <div class="sidebar-card">
+      <h3>Common Questions</h3>
+      <div class="prompt-chips" role="group" aria-label="Common Question Prompts">
+        <button type="button" class="chip-btn" data-query="What is the STAR programme and when does it take place?">
+          🗓️ When is the STAR programme?
+        </button>
+        <button type="button" class="chip-btn" data-query="How much does it cost to attend the STAR programme and are meals free?">
+          💷 Is the residential free?
+        </button>
+        <button type="button" class="chip-btn" data-query="What is an Inclusive Support Plan (ISP) and can I get extra exam time?">
+          📝 How do Inclusive Support Plans work?
+        </button>
+        <button type="button" class="chip-btn" data-query="What is Disabled Students' Allowance (DSA) and is it a loan?">
+          🎓 What does DSA funding cover?
+        </button>
+        <button type="button" class="chip-btn" data-query="Are there accessible rooms in halls for wheelchair users?">
+          🏠 Are there accessible halls rooms?
+        </button>
+        <button type="button" class="chip-btn" data-query="Can my parents stay overnight with me during the STAR residential?">
+          👨‍👩‍👦 Can parents stay overnight?
+        </button>
+      </div>
+    </div>
+
+    <!-- Active LLM Provider Status -->
+    <div class="sidebar-card status-card">
+      <h3>System Status</h3>
+      <dl class="status-list">
+        <div class="status-row">
+          <dt>Knowledge Base:</dt>
+          <dd><strong>{{ total_chunks }} Approved UCLan Chunks</strong></dd>
+        </div>
+        <div class="status-row">
+          <dt>Glossary Terms:</dt>
+          <dd><strong>{{ glossary_count }} Plain-English Terms</strong></dd>
+        </div>
+        <div class="status-row">
+          <dt>Provider:</dt>
+          <dd><span class="provider-pill">{{ llm_provider | upper }}</span></dd>
+        </div>
+        <div class="status-row">
+          <dt>Safety Guardrail:</dt>
+          <dd><span class="safety-pill">Active (Wellbeing Signposting)</span></dd>
+        </div>
+      </dl>
+    </div>
+  </aside>
+
+  <!-- Right Side: Chat Conversation Area -->
+  <section class="chat-main" aria-label="Conversation with Assistant">
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite">
+      <!-- Welcome Message -->
+      <div class="message assistant-message" tabindex="0">
+        <div class="message-header">
+          <span class="avatar" aria-hidden="true">⭐</span>
+          <span class="sender-name">STARPath Assistant</span>
+          <span class="msg-time">Ready</span>
+        </div>
+        <div class="message-body">
+          <p>
+            Hello! I am your <strong>STARPath Assistant</strong>. I am here to help you learn about the 
+            <strong>Student Transition and Residential (STAR) programme</strong>, university halls of residence, 
+            and Inclusive Support services at UCLan.
+          </p>
+          <p>
+            You can ask me questions completely anonymously. Every answer I give comes directly from 
+            official UCLan web pages, and I will always show you which page the information came from.
+          </p>
+          <p><em>Type a question below or click one of the suggested prompts to get started!</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Form -->
+    <form id="chat-form" class="chat-form" role="search" aria-label="Ask a question">
+      <div class="input-container">
+        <label for="user-input" class="sr-only">Type your question about the STAR programme or support</label>
+        <textarea 
+          id="user-input" 
+          name="question" 
+          rows="2" 
+          placeholder="Ask a question (e.g., 'What help can I get for dyslexia?' or 'What should I pack for STAR?')..."
+          required
+          aria-required="true"
+        ></textarea>
+        <div class="input-actions">
+          <button type="submit" id="send-btn" class="send-btn" aria-label="Send question">
+            <span aria-hidden="true">Send</span> ➔
+          </button>
+        </div>
+      </div>
+      <div class="input-hint">
+        <small>💡 <em>Tip: Press <strong>Enter</strong> to send, or <strong>Shift + Enter</strong> for a new line. Your identity is always private.</em></small>
+      </div>
+    </form>
+  </section>
+</div>
+
+<!-- Plain-English Glossary Popover Modal -->
+<div id="glossary-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-term-title" hidden>
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modal-term-title" class="modal-title">University Term</h3>
+      <button type="button" id="close-modal-btn" class="close-btn" aria-label="Close glossary explanation">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p id="modal-term-definition" class="modal-definition"></p>
+      <p class="modal-source">
+        <strong>Source reference:</strong> 
+        <a id="modal-term-link" href="#" target="_blank" rel="noopener noreferrer">View official page</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

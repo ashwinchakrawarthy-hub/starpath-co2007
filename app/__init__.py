@@ -1,0 +1,2 @@
+"""STARPath - Accessible STAR Programme Assistant package."""
+__version__ = "1.0.0"

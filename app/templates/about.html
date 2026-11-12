@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}About & Ambassador Sharing - STARPath{% endblock %}
+
+{% block content %}
+<div class="content-card">
+  <div class="page-title-section">
+    <h2>Student Ambassador Sharing & Project Information ⭐</h2>
+    <p class="subtitle">
+      Tools and materials for Student Wellbeing Ambassadors (SWAs) to signpost incoming offer-holders to STARPath.
+    </p>
+  </div>
+
+  <div class="grid-two-col">
+    <!-- Left Column: Guidelines & Ethical Boundaries -->
+    <div class="card-section">
+      <h3>About the STARPath Assistant</h3>
+      <p>
+        <strong>STARPath</strong> is a specialized proof-of-concept question-and-answer assistant built by an Agile student development team for <strong>CO2007 The Agile Professional</strong> at the University of Central Lancashire.
+      </p>
+      
+      <h4>What STARPath Does:</h4>
+      <ul class="bullet-list">
+        <li><strong>Answers Common Questions:</strong> Provides direct answers to recurring questions about the 3-day summer residential, accessible halls, and disability support.</li>
+        <li><strong>Shows Source Citations:</strong> Every answer clearly shows the official UCLan web page and section it came from so students can verify details.</li>
+        <li><strong>Plain-English Glossary:</strong> Explains confusing UK university terms (like <em>ISP</em>, <em>DSA</em>, or <em>En-suite</em>) in simple words for international students.</li>
+        <li><strong>Guaranteed Honesty:</strong> If an answer is not in the official pages, it says so directly rather than guessing or making things up.</li>
+        <li><strong>Crisis Safety:</strong> Automatically routes any student expressing distress or self-harm to the UCLan Wellbeing Service and emergency human support.</li>
+      </ul>
+
+      <div class="alert-box ethics-alert" role="note">
+        <h4>⚠️ Academic Prototype Notice</h4>
+        <p>
+          As specified in the university assignment brief, this software is a <strong>student research prototype</strong>. 
+          It has been tested exclusively with enrolled module students and academic tutors. 
+          It is <strong>not</strong> deployed to real incoming offer-holders on the live STAR residential without formal institutional ethics approval.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Printable Ambassador Card Mock-up -->
+    <div class="card-section">
+      <h3>Ambassador Printable Card Mock-Up</h3>
+      <p>Student Wellbeing Ambassadors can hand out this A5 card mock-up or display it on registration desks:</p>
+
+      <div class="printable-card" id="printable-card">
+        <div class="prototype-watermark" aria-hidden="true">PROTOTYPE DEMO ONLY</div>
+        
+        <div class="print-card-header">
+          <span class="print-logo" aria-hidden="true">⭐</span>
+          <div>
+            <h4>UCLan STAR Programme</h4>
+            <p><strong>Ask STARPath: Your 24/7 Transition Assistant</strong></p>
+          </div>
+        </div>
+
+        <div class="print-card-body">
+          <div class="qr-container">
+            <!-- Inline SVG QR Code Representation -->
+            <svg class="qr-code-svg" viewBox="0 0 100 100" width="130" height="130" aria-label="QR Code link to STARPath">
+              <rect width="100" height="100" fill="#ffffff"/>
+              <!-- Position markers -->
+              <rect x="5" y="5" width="30" height="30" fill="#002147"/>
+              <rect x="10" y="10" width="20" height="20" fill="#ffffff"/>
+              <rect x="15" y="15" width="10" height="10" fill="#002147"/>
+              
+              <rect x="65" y="5" width="30" height="30" fill="#002147"/>
+              <rect x="70" y="10" width="20" height="20" fill="#ffffff"/>
+              <rect x="75" y="15" width="10" height="10" fill="#002147"/>
+              
+              <rect x="5" y="65" width="30" height="30" fill="#002147"/>
+              <rect x="10" y="70" width="20" height="20" fill="#ffffff"/>
+              <rect x="15" y="75" width="10" height="10" fill="#002147"/>
+              
+              <!-- Pattern matrix -->
+              <rect x="42" y="10" width="6" height="6" fill="#002147"/>
+              <rect x="52" y="10" width="6" height="6" fill="#002147"/>
+              <rect x="42" y="24" width="16" height="6" fill="#002147"/>
+              <rect x="10" y="42" width="20" height="6" fill="#002147"/>
+              <rect x="40" y="40" width="20" height="20" fill="#d71920"/>
+              <rect x="46" y="46" width="8" height="8" fill="#ffffff"/>
+              <rect x="70" y="42" width="18" height="6" fill="#002147"/>
+              <rect x="10" y="52" width="6" height="6" fill="#002147"/>
+              <rect x="70" y="52" width="12" height="6" fill="#002147"/>
+              <rect x="42" y="70" width="12" height="6" fill="#002147"/>
+              <rect x="62" y="70" width="12" height="6" fill="#002147"/>
+              <rect x="42" y="82" width="30" height="6" fill="#002147"/>
+            </svg>
+            <p class="qr-caption"><small>Scan with your phone camera to start asking questions</small></p>
+          </div>
+
+          <div class="print-tips">
+            <h5>3 Easy Tips for Students:</h5>
+            <ol>
+              <li><strong>It's 100% Free & Anonymous:</strong> You do not need to log in or enter your name.</li>
+              <li><strong>Check the Sources:</strong> Click any source link under the answer to read the full university page.</li>
+              <li><strong>Tap for Plain English:</strong> If any word looks unfamiliar, tap it to see what it means in plain English.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="print-card-footer">
+          <small>Need urgent human support? Contact UCLan Wellbeing on <strong>01772 893020</strong> or email <strong>wellbeing@uclan.ac.uk</strong>.</small>
+        </div>
+      </div>
+
+      <div class="print-action-bar">
+        <button type="button" class="btn btn-secondary" onclick="window.print()">
+          🖨️ Print Card Mock-Up
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
