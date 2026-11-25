@@ -30,7 +30,7 @@ Incoming undergraduate offer-holders on the University of Central Lancashire's (
 
 ## 2. Master Directory of Project Documents & Storage Locations
 
-All deliverables are organized in your project workspace: `c:\Users\ELCOT\Desktop\assesment1- ds\`.
+All deliverables are organized in your project workspace: `c:\Users\ELCOT\Desktop\AGILE- Project\`.
 
 | File / Folder Path | Deliverable Purpose | How to Open / Run |
 |:---|:---|:---|
@@ -65,7 +65,7 @@ All deliverables are organized in your project workspace: `c:\Users\ELCOT\Deskto
 - **Method A (Easiest):** Double-click [`run_local.bat`](file:///c:/Users/ELCOT/Desktop/assesment1-%20ds/run_local.bat) in your project folder. The server boots in $<1$ second and opens your browser directly to `http://127.0.0.1:8000`.
 - **Method B (PowerShell):**
   ```powershell
-  cd "c:\Users\ELCOT\Desktop\assesment1- ds"
+  cd "c:\Users\ELCOT\Desktop\AGILE- Project"
   python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
   ```
 

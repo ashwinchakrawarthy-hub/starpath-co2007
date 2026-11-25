@@ -225,7 +225,7 @@ def create_document():
     add_h1("2. Complete Document Storage Directory & Access Inventory")
     add_body(
         "All project assets, documentation, tests, and configuration files are located inside your "
-        "root project workspace directory: C:\\Users\\ELCOT\\Desktop\\assesment1- ds. "
+        "root project workspace directory: C:\\Users\\ELCOT\\Desktop\\AGILE- Project. "
         "Below is an exhaustive index of every deliverable file and its exact location."
     )
 
@@ -275,7 +275,7 @@ def create_document():
 
     add_h2("Step 1: Launching the Application Locally (Lab PC & Development)")
     add_body("You have two effortless options to launch STARPath on any machine:")
-    add_bullet(" Navigate to c:\\Users\\ELCOT\\Desktop\\assesment1- ds in Windows File Explorer and double-click run_local.bat. This starts the FastAPI Uvicorn server in under 1 second and immediately opens your default browser to http://127.0.0.1:8000.", bold_prefix="Option A (One-Click Launcher):")
+    add_bullet(" Navigate to c:\\Users\\ELCOT\\Desktop\\AGILE- Project in Windows File Explorer and double-click run_local.bat. This starts the FastAPI Uvicorn server in under 1 second and immediately opens your default browser to http://127.0.0.1:8000.", bold_prefix="Option A (One-Click Launcher):")
     add_bullet(" Open PowerShell, navigate to the folder, and run: python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload", bold_prefix="Option B (Terminal Command):")
 
     add_h2("Step 2: Accessing the Web Interfaces in Your Browser")
@@ -288,7 +288,7 @@ def create_document():
     add_h2("Step 3: Running the Automated Test Suite")
     add_body("To prove code quality and regression safety to the module leader, run:")
     add_callout(
-        "cd 'c:\\Users\\ELCOT\\Desktop\\assesment1- ds'\n"
+        "cd 'c:\\Users\\ELCOT\\Desktop\\AGILE- Project'\n"
         "python -m unittest discover tests -v\n\n"
         "VERIFIED RESULT: 22 tests run in ~0.12 seconds with status: OK.\n"
         "- test_safety.py: 20 crisis prompts correctly intercepted (100% detection rate)\n"
@@ -460,7 +460,7 @@ def create_document():
         add_body(a_text, italic=True)
 
     # Save Document
-    out_dir = r"c:\Users\ELCOT\Desktop\assesment1- ds\docs"
+    out_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "docs"))
     os.makedirs(out_dir, exist_ok=True)
     out_file = os.path.join(out_dir, "STARPath_Project_Guide_and_Module_Leader_Brief.docx")
     doc.save(out_file)

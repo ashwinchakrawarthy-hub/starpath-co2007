@@ -846,7 +846,7 @@ def create_deck():
     )
 
     # Save PPTX
-    out_dir = r"c:\Users\ELCOT\Desktop\assesment1- ds\docs"
+    out_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "docs"))
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "STARPath_Module_Leader_Presentation.pptx")
     prs.save(out_path)

@@ -48,7 +48,7 @@ Vercel provides blazing-fast serverless cloud hosting for FastAPI applications w
      **`https://starpath-uclan.vercel.app`** (or your chosen name)!
 
 #### Method B: Deploy from Terminal (Using Vercel CLI):
-1. Open PowerShell in `c:\Users\ELCOT\Desktop\assesment1- ds`.
+1. Open PowerShell in `c:\Users\ELCOT\Desktop\AGILE- Project`.
 2. Run:
    ```powershell
    npx vercel
