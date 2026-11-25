@@ -85,7 +85,7 @@ def call_gemini_api(prompt: str, system_instruction: str = SYSTEM_INSTRUCTION) -
     for model_name in candidate_models:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={GEMINI_API_KEY}"
         try:
-            resp = requests.post(url, json=payload, timeout=20)
+            resp = requests.post(url, json=payload, timeout=6)
             if resp.status_code == 200:
                 data = resp.json()
                 candidates = data.get("candidates", [])
