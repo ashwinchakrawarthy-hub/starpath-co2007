@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Student Usability & Test Evaluation — STARPath{% endblock %}
+{% block title %}Usability Testing & Benchmark Evaluation — STARPath{% endblock %}
 
 {% block content %}
 <div class="content-wrapper">
@@ -8,11 +8,11 @@
   <div class="page-intro-header">
     <div class="intro-badges">
       <span class="badge-pill">CO2007 Coursework Evaluation</span>
-      <span class="badge-pill">Student Usability & Benchmark Suite</span>
+      <span class="badge-pill">System Usability Scale &amp; Benchmark Suite</span>
     </div>
-    <h2 class="page-title">Usability Testing & Project Evaluation 📊</h2>
+    <h2 class="page-title">Usability Testing &amp; Benchmark Evaluation</h2>
     <p class="page-subtitle">
-      As part of our second-year Agile team project, we tested STARPath with university peers and benchmarked its grounded answers against a simple keyword search baseline across 35 realistic student questions.
+      Quantitative testing results and baseline comparison across 35 curated student queries, evaluated as part of Module CO2007 (The Agile Professional).
     </p>
   </div>
 
@@ -21,38 +21,37 @@
     <div class="highlight-card">
       <span class="highlight-big-number">88.5</span>
       <span class="highlight-tag">SUS Score (Grade A)</span>
-      <p class="highlight-desc">Average System Usability Scale rating collected from 12 student classmates.</p>
+      <p class="highlight-desc">Average System Usability Scale rating collected across 12 undergraduate peer evaluations.</p>
     </div>
     <div class="highlight-card">
       <span class="highlight-big-number">100%</span>
       <span class="highlight-tag">Task Completion</span>
-      <p class="highlight-desc">All testers successfully found bedroom info, ISP details, and ticked items off the packing list.</p>
+      <p class="highlight-desc">All testers successfully located room specifications, ISP procedures, and completed the packing checklist.</p>
     </div>
     <div class="highlight-card">
       <span class="highlight-big-number">14.2:1</span>
       <span class="highlight-tag">Contrast Ratio</span>
-      <p class="highlight-desc">High contrast theme exceeds WCAG 2.2 AAA standard (7:1) for visual accessibility.</p>
+      <p class="highlight-desc">High contrast mode exceeds WCAG 2.2 AAA standard (7:1) for low-vision and neurodivergent accessibility.</p>
     </div>
     <div class="highlight-card">
       <span class="highlight-big-number">0</span>
-      <span class="highlight-tag">Personal Logs Stored</span>
-      <p class="highlight-desc">All user queries, emails, and phone numbers are scrubbed with zero permanent server logs.</p>
+      <span class="highlight-tag">PII Data Retained</span>
+      <p class="highlight-desc">All user queries, emails, and student ID numbers are sanitized prior to retrieval with zero disk persistence.</p>
     </div>
   </div>
 
   <!-- Run Automated Test Suite Bar -->
   <div class="eval-run-box">
     <div class="dataset-meta">
-      <span class="dataset-icon" aria-hidden="true">📋</span>
       <div>
-        <strong>Curated Test Suite:</strong>
-        <span class="dataset-text">35 Real Questions (23 STAR topics, 6 out-of-scope, 6 emergency crisis safety tests)</span>
+        <strong>Curated Evaluation Dataset:</strong>
+        <span class="dataset-text">35 Test Questions (26 in-scope residential topics, 4 crisis safety triggers, 5 out-of-scope honest refusal queries)</span>
       </div>
     </div>
     <div class="eval-actions">
       <button type="button" id="run-eval-btn" class="btn-primary">
         <span id="eval-spinner" class="spinner" hidden></span>
-        <span class="btn-text">⚡ Run Test Suite Comparison</span>
+        <span class="btn-text">Execute Live Benchmark Evaluation</span>
       </button>
     </div>
   </div>
@@ -61,88 +60,49 @@
   <div class="metrics-grid">
     <div class="metric-card metric-primary">
       <div class="metric-card-header">
-        <span class="metric-icon" aria-hidden="true">⭐</span>
-        <span class="metric-badge">STARPath Assistant</span>
+        <span class="metric-badge">STARPath Grounded RAG</span>
       </div>
       <div class="metric-value" id="rag-acc">--%</div>
-      <div class="metric-label">Grounded RAG Accuracy</div>
+      <div class="metric-label">Grounded Retrieval Accuracy</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-primary" id="rag-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Retrieval + Verified Plain-English Answer</small>
+      <small class="metric-subtext">BM25 Retrieval + Term Coverage Penalty + Citation</small>
     </div>
 
     <div class="metric-card metric-neutral">
       <div class="metric-card-header">
-        <span class="metric-icon" aria-hidden="true">🔍</span>
-        <span class="metric-badge">Comparison Baseline</span>
+        <span class="metric-badge">Keyword Baseline</span>
       </div>
       <div class="metric-value" id="baseline-acc">--%</div>
-      <div class="metric-label">Simple Keyword Search</div>
+      <div class="metric-label">Simple Keyword Match</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-neutral" id="baseline-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Raw word match with zero synthesis</small>
+      <small class="metric-subtext">Unweighted keyword count without synthesis or refusal</small>
     </div>
 
     <div class="metric-card metric-success">
       <div class="metric-card-header">
-        <span class="metric-icon" aria-hidden="true">🛡️</span>
-        <span class="metric-badge">Crisis Safety</span>
+        <span class="metric-badge">Crisis Safety Interception</span>
       </div>
       <div class="metric-value" id="safety-acc">--%</div>
-      <div class="metric-label">Crisis Signposting Rate</div>
+      <div class="metric-label">Safety Detection Rate</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-success" id="safety-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Immediate UCLan & NHS Emergency Helpline Numbers</small>
-    </div>
-
-    <div class="metric-card metric-accent">
-      <div class="metric-card-header">
-        <span class="metric-icon" aria-hidden="true">⚖️</span>
-        <span class="metric-badge">Honesty & Grounding</span>
-      </div>
-      <div class="metric-value" id="honest-acc">--%</div>
-      <div class="metric-label">Out-of-Scope Refusal</div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill fill-accent" id="honest-bar" style="width: 0%"></div>
-      </div>
-      <small class="metric-subtext">Polite refusal when topics aren't in verified notes</small>
+      <small class="metric-subtext">Emergency signposting to UCLan Wellbeing and 24/7 Security</small>
     </div>
   </div>
 
-  <!-- What the Assistant Adds Summary -->
-  <div class="comparison-summary-card">
-    <div class="comparison-header">
-      <span class="comp-icon" aria-hidden="true">💡</span>
-      <h3>Why Plain-English Answers Beat Raw Search</h3>
-    </div>
-    <div class="comparison-body" id="llm-adds-desc">
-      <p class="placeholder-prompt">
-        <em>Click "Run Test Suite Comparison" above to calculate live benchmark scores across all 35 test questions.</em>
-      </p>
+  <!-- Detailed Benchmark Breakdown Table -->
+  <div class="eval-table-card">
+    <h3 class="card-section-title">Evaluation Analysis: What the Architecture Delivers</h3>
+    <p class="section-intro">Comparison between raw baseline search and the grounded STARPath RAG architecture:</p>
+    
+    <div class="eval-analysis-box" id="llm-adds-desc">
+      <p>Click <strong>"Execute Live Benchmark Evaluation"</strong> above to run all 35 test questions live through the FastAPI backend and inspect detailed retrieval scores.</p>
     </div>
   </div>
-
-  <!-- Peer Feedback Quotes -->
-  <div class="feedback-quotes-section">
-    <h3 class="feedback-title">What Classmate Testers Said During Usability Sessions</h3>
-    <div class="quotes-grid">
-      <div class="quote-card">
-        <p class="quote-text">"The interactive packing checklist was so helpful! When I moved into halls last year, I forgot my ID and had to wait hours for my keycard. This keeps you organized."</p>
-        <span class="quote-author">— 2nd-Year Computer Science Student</span>
-      </div>
-      <div class="quote-card">
-        <p class="quote-text">"Translating acronyms like ISP and DSA into simple language makes university feel way less intimidating, especially for neurodivergent students or anyone with anxiety."</p>
-        <span class="quote-author">— Student Mentor & Peer Reviewer</span>
-      </div>
-      <div class="quote-card">
-        <p class="quote-text">"Having high-contrast yellow-on-black and dyslexia font toggles built straight into the header meant I didn't need to install any extra browser extensions."</p>
-        <span class="quote-author">— Accessibility Student Tester</span>
-      </div>
-    </div>
-  </div>
-
 </div>
 {% endblock %}

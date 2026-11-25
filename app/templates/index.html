@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}STARPath — Friendly UCLan Student Transition Guide{% endblock %}
+{% block title %}STARPath — UCLan Student Transition Guide{% endblock %}
 
 {% block content %}
 <div class="app-layout">
@@ -10,108 +10,93 @@
     <!-- Student Welcome Card -->
     <div class="guide-card welcome-card">
       <div class="card-tag-row">
-        <span class="tag-peer">👋 Student-to-Student</span>
-        <span class="tag-free">Free & Private</span>
+        <span class="tag-meta">Undergraduate Transition Portal</span>
+        <span class="tag-status">Free &amp; Confidential</span>
       </div>
-      <h2 class="card-heading">Welcome to STARPath!</h2>
+      <h2 class="card-heading">Welcome to the STAR Guide</h2>
       <p class="welcome-copy">
-        Created by second-year UCLan students who remember what it feels like to be new. We built this to help incoming offer-holders with disabilities, neurodivergence, or general nerves feel calm, informed, and excited about the <strong>STAR Residential</strong> this August.
+        Developed by second-year AI &amp; Data Science students to assist incoming offer-holders with disabilities, neurodivergence, or transition anxiety preparing for the <strong>STAR Residential</strong> event at UCLan.
       </p>
       
       <div class="privacy-box" role="status">
-        <span class="privacy-icon" aria-hidden="true">🔒</span>
-        <div class="privacy-info">
-          <strong>100% Private & Anonymous:</strong> You never need to log in or share your name, student ID, or personal contact info.
-        </div>
+        <span class="privacy-badge-text">Privacy Notice:</span>
+        <span class="privacy-desc">
+          No sign-in required. Names, student IDs, and emails are stripped automatically before processing.
+        </span>
       </div>
     </div>
 
     <!-- Suggested Question Prompts -->
     <div class="guide-card prompts-card">
       <div class="prompts-header">
-        <h3 class="prompts-title">Common Student Questions</h3>
-        <span class="prompts-sub">Tap any question to ask straight away:</span>
+        <h3 class="prompts-title">Frequently Asked Questions</h3>
+        <span class="prompts-sub">Select any query to view grounded answers:</span>
       </div>
 
       <!-- Question Categories -->
       <div class="category-tabs" role="tablist" aria-label="Question Categories">
-        <button type="button" class="category-btn active" data-tab="all" role="tab" aria-selected="true">⭐ Popular</button>
-        <button type="button" class="category-btn" data-tab="halls" role="tab" aria-selected="false">🛏️ Rooms</button>
-        <button type="button" class="category-btn" data-tab="support" role="tab" aria-selected="false">📝 Support</button>
-        <button type="button" class="category-btn" data-tab="food" role="tab" aria-selected="false">🍲 Food</button>
-        <button type="button" class="category-btn" data-tab="arrival" role="tab" aria-selected="false">🎒 Arrival</button>
+        <button type="button" class="category-btn active" data-tab="all" role="tab" aria-selected="true">All Queries</button>
+        <button type="button" class="category-btn" data-tab="halls" role="tab" aria-selected="false">Halls &amp; Rooms</button>
+        <button type="button" class="category-btn" data-tab="support" role="tab" aria-selected="false">Support &amp; ISPs</button>
+        <button type="button" class="category-btn" data-tab="food" role="tab" aria-selected="false">Dining &amp; Diets</button>
+        <button type="button" class="category-btn" data-tab="arrival" role="tab" aria-selected="false">Arrival &amp; Keys</button>
       </div>
 
       <!-- Prompts Grid -->
-      <div class="prompts-list" role="group" aria-label="Quick Question Chips">
+      <div class="prompts-list" role="group" aria-label="Sample Question Selection">
         <!-- Popular -->
         <button type="button" class="prompt-chip" data-category="all" data-query="What is the STAR programme and when does it take place?">
-          <span class="chip-emoji">🗓️</span>
-          <span class="chip-label">When is the STAR programme taking place?</span>
+          <span class="chip-label">When does the STAR residential take place?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="all" data-query="How much does it cost to attend the STAR programme and are meals free?">
-          <span class="chip-emoji">💷</span>
-          <span class="chip-label">Is the 3-day residential completely free?</span>
+          <span class="chip-label">Are meals and accommodation completely free?</span>
         </button>
 
         <!-- Rooms & Halls -->
         <button type="button" class="prompt-chip" data-category="halls" data-query="Are the accommodation rooms during STAR en-suite and do I get my own bedroom?">
-          <span class="chip-emoji">🛏️</span>
-          <span class="chip-label">Are rooms en-suite with private bathrooms?</span>
+          <span class="chip-label">Are rooms single-occupancy with en-suite bathrooms?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="halls" data-query="Can my parents stay overnight with me during the STAR residential?">
-          <span class="chip-emoji">👨‍👩‍👧</span>
-          <span class="chip-label">Can parents or carers stay overnight?</span>
+          <span class="chip-label">Can parents or personal carers stay overnight in halls?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="halls" data-query="Are there quiet corridors or quiet flats in halls for low sensory noise?">
-          <span class="chip-emoji">🤫</span>
-          <span class="chip-label">Can I request a quiet flat with less noise?</span>
+          <span class="chip-label">Can I request a quiet flat with reduced noise?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="halls" data-query="Are halls accessible for wheelchair users?">
-          <span class="chip-emoji">♿</span>
-          <span class="chip-label">Are rooms wheelchair-accessible with wet rooms?</span>
+          <span class="chip-label">Are rooms accessible for wheelchair users with wet rooms?</span>
         </button>
 
         <!-- Support & ISPs -->
         <button type="button" class="prompt-chip" data-category="support" data-query="What is an Inclusive Support Plan (ISP) and can I get extra exam time?">
-          <span class="chip-emoji">📝</span>
-          <span class="chip-label">How do Inclusive Support Plans (ISPs) work?</span>
+          <span class="chip-label">How do Inclusive Support Plans (ISPs) work for exams?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="support" data-query="What is Disabled Students' Allowance (DSA) and is it a loan?">
-          <span class="chip-emoji">🎓</span>
-          <span class="chip-label">What is DSA funding and do I repay it?</span>
+          <span class="chip-label">What is Disabled Students' Allowance (DSA) funding?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="support" data-query="What support is available at UCLan for students with dyslexia or ADHD?">
-          <span class="chip-emoji">💡</span>
-          <span class="chip-label">What help is there for dyslexia or ADHD?</span>
+          <span class="chip-label">What academic support exists for dyslexia or ADHD?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="support" data-query="Where can I find quiet sensory rooms or calm spaces on campus?">
-          <span class="chip-emoji">🌿</span>
-          <span class="chip-label">Where are quiet sensory rooms on campus?</span>
+          <span class="chip-label">Where are quiet sensory rooms located on campus?</span>
         </button>
 
         <!-- Food & Dining -->
         <button type="button" class="prompt-chip" data-category="food" data-query="Are meals provided during the STAR residential and are there dietary options?">
-          <span class="chip-emoji">🍽️</span>
-          <span class="chip-label">Are halal, vegan & allergy-safe meals provided?</span>
+          <span class="chip-label">Are halal, vegan, and allergy-safe meals provided?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="food" data-query="Where is the dining hall and what are meal times during STAR?">
-          <span class="chip-emoji">🍲</span>
-          <span class="chip-label">Where do we eat breakfast, lunch and dinner?</span>
+          <span class="chip-label">Where is Foster Refectory and what are dining hours?</span>
         </button>
 
         <!-- Arrival & Packing -->
         <button type="button" class="prompt-chip" data-category="arrival" data-query="What should I pack for the 3-day STAR residential?">
-          <span class="chip-emoji">🎒</span>
-          <span class="chip-label">What essential items should I pack?</span>
+          <span class="chip-label">What essential items should I pack for the 3 days?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="arrival" data-query="Where do I check in on the first day of the STAR programme?">
-          <span class="chip-emoji">📍</span>
-          <span class="chip-label">Where is the Day 1 registration desk?</span>
+          <span class="chip-label">Where is the Day 1 registration desk located?</span>
         </button>
         <button type="button" class="prompt-chip" data-category="arrival" data-query="Can I bring an assistance or guide dog to campus and halls?">
-          <span class="chip-emoji">🐕</span>
-          <span class="chip-label">Can I bring a registered assistance dog?</span>
+          <span class="chip-label">What is the policy regarding registered assistance dogs?</span>
         </button>
       </div>
     </div>
@@ -120,8 +105,8 @@
     <div class="guide-card packing-card">
       <div class="packing-header">
         <div class="packing-title-group">
-          <h3 class="packing-title">🎒 Moving-In Packing List</h3>
-          <p class="packing-hint">Tick items off as you pack your bag:</p>
+          <h3 class="packing-title">Move-In Packing Checklist</h3>
+          <p class="packing-hint">Tick items off as you prepare your luggage:</p>
         </div>
         <span class="packing-badge" id="checklist-counter">0 / 6 packed</span>
       </div>
@@ -136,42 +121,42 @@
           <label class="check-row">
             <input type="checkbox" data-item="photo-id" class="check-box">
             <span class="check-custom" aria-hidden="true"></span>
-            <span class="check-text"><strong>Photo ID:</strong> Passport, Driver's License, or CitizenCard (for hall key)</span>
+            <span class="check-text"><strong>Photo ID:</strong> Passport, Driver's License, or CitizenCard (for key collection)</span>
           </label>
         </li>
         <li>
           <label class="check-row">
             <input type="checkbox" data-item="meds" class="check-box">
             <span class="check-custom" aria-hidden="true"></span>
-            <span class="check-text"><strong>Medications & letters:</strong> Prescriptions and medical/diagnostic evidence</span>
+            <span class="check-text"><strong>Medication &amp; documentation:</strong> Prescriptions and medical/diagnostic evidence</span>
           </label>
         </li>
         <li>
           <label class="check-row">
             <input type="checkbox" data-item="chargers" class="check-box">
             <span class="check-custom" aria-hidden="true"></span>
-            <span class="check-text"><strong>Tech & electronics:</strong> Phone charger, headphones & UK plug lead</span>
+            <span class="check-text"><strong>Electronics:</strong> Phone charger, headphones, and UK plug adapters</span>
           </label>
         </li>
         <li>
           <label class="check-row">
             <input type="checkbox" data-item="shoes" class="check-box">
             <span class="check-custom" aria-hidden="true"></span>
-            <span class="check-text"><strong>Comfortable shoes:</strong> Trainers for exploring campus without blisters</span>
+            <span class="check-text"><strong>Footwear:</strong> Comfortable walking shoes for campus tours</span>
           </label>
         </li>
         <li>
           <label class="check-row">
             <input type="checkbox" data-item="toiletries" class="check-box">
             <span class="check-custom" aria-hidden="true"></span>
-            <span class="check-text"><strong>Bathroom items:</strong> Bath towel, soap, shampoo & toothbrush</span>
+            <span class="check-text"><strong>Bathroom essentials:</strong> Bath towel, soap, shampoo, and toothbrush</span>
           </label>
         </li>
         <li>
           <label class="check-row">
             <input type="checkbox" data-item="sensory" class="check-box">
             <span class="check-custom" aria-hidden="true"></span>
-            <span class="check-text"><strong>Comfort essentials:</strong> Cosy hoodie, ear defenders, fidgets or sunglasses</span>
+            <span class="check-text"><strong>Comfort items:</strong> Ear defenders, sensory aids, or familiar hoodie</span>
           </label>
         </li>
       </ul>
@@ -179,41 +164,41 @@
 
     <!-- Campus Location Spotlight -->
     <div class="guide-card campus-spots-card">
-      <h3 class="spots-title">📍 Key Campus Spots</h3>
-      <p class="spots-subtitle">Where activities happen during the 3 days:</p>
+      <h3 class="spots-title">Key Campus Locations</h3>
+      <p class="spots-subtitle">Core venues used during the 3-day residential:</p>
 
       <div class="spots-list">
         <div class="spot-card">
-          <div class="spot-icon" aria-hidden="true">🏢</div>
+          <div class="spot-marker">VENUE 1</div>
           <div class="spot-body">
             <strong>Harrington Building</strong>
             <p>Day 1 check-in desk, welcome lanyard collection, and quiet welcome lounge.</p>
           </div>
         </div>
         <div class="spot-card">
-          <div class="spot-icon" aria-hidden="true">🍲</div>
+          <div class="spot-marker">VENUE 2</div>
           <div class="spot-body">
             <strong>Foster Refectory</strong>
-            <p>Free hot breakfast, lunch, and dinner. Clear halal, vegan, and allergy stations.</p>
+            <p>Complimentary breakfast, lunch, and dinner. Halal, vegan, and allergy stations clearly signposted.</p>
           </div>
         </div>
         <div class="spot-card">
-          <div class="spot-icon" aria-hidden="true">🛏️</div>
+          <div class="spot-marker">VENUE 3</div>
           <div class="spot-body">
-            <strong>Roeburn & Ribble Halls</strong>
-            <p>Your accommodation: private en-suite room, flat kitchen, and 24/7 keycard security.</p>
+            <strong>Roeburn &amp; Ribble Halls</strong>
+            <p>Residential accommodation: private en-suite bedroom, shared kitchen, and 24/7 keycard access.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Friendly Student Trust Card -->
+    <!-- Methodology & Verification Card -->
     <div class="guide-card trust-card">
-      <h3 class="trust-title">💡 How STARPath Works</h3>
+      <h3 class="trust-title">Information Grounding Policy</h3>
       <ul class="trust-points">
-        <li><strong>📚 Real UCLan Handbooks:</strong> Answers are checked against current university accommodation, transition, and wellbeing guides.</li>
-        <li><strong>🗣️ Plain English:</strong> No bureaucratic jargon. If a tricky term like <em>ISP</em> or <em>DSA</em> appears, click it for an instant simple explanation.</li>
-        <li><strong>🛡️ Safe & Grounded:</strong> If we don't know something for sure, we'll tell you honestly and give you the real phone number or email of someone at UCLan who does.</li>
+        <li><strong>Verified Knowledge Base:</strong> Answers are retrieved strictly from dated, official UCLan Student Services and Accommodation guidance.</li>
+        <li><strong>Plain English Translation:</strong> Tricky higher education jargon (e.g. <em>ISP</em>, <em>DSA</em>) is highlighted with plain-English definitions.</li>
+        <li><strong>Deterministic Citations:</strong> If information is outside our approved guidance, the assistant states this clearly rather than fabricating dates or rules.</li>
       </ul>
     </div>
 
@@ -225,19 +210,15 @@
     <!-- Chat Header Bar -->
     <div class="chat-top-bar">
       <div class="assistant-details">
-        <div class="assistant-avatar" aria-hidden="true">
-          <span>⭐</span>
-          <span class="online-dot" title="Ready to help"></span>
-        </div>
         <div class="assistant-text">
-          <h2 class="assistant-title">STARPath Student Guide</h2>
-          <span class="assistant-status">Sourced from official UCLan student guides · Updated for 2027</span>
+          <h2 class="assistant-title">STARPath Information Assistant</h2>
+          <span class="assistant-status">Grounded in official UCLan documentation · Verified for 2026/27</span>
         </div>
       </div>
 
       <div class="chat-actions">
-        <button type="button" id="clear-chat-btn" class="chat-btn-secondary" title="Clear conversation history">
-          <span aria-hidden="true">🔄</span> Start Fresh
+        <button type="button" id="clear-chat-btn" class="chat-btn-secondary" title="Clear current conversation history">
+          Clear Conversation
         </button>
       </div>
     </div>
@@ -249,30 +230,29 @@
       <div class="message-row bot-row" data-message-id="welcome">
         <div class="message-bubble bot-bubble">
           <div class="bubble-header">
-            <span class="bubble-author">⭐ STARPath Guide</span>
-            <span class="bubble-time">Just now</span>
+            <span class="bubble-author">STARPath Assistant</span>
+            <span class="bubble-time">Induction Session</span>
           </div>
 
           <div class="bubble-content">
-            <p class="greeting-lead"><strong>Hi there! A very warm welcome to UCLan! 👋</strong></p>
+            <p class="greeting-lead"><strong>Welcome to the UCLan STAR Transition Assistant.</strong></p>
             <p>
-              I'm <strong>STARPath</strong>, a friendly guide put together by current students to help you get ready for the 
-              <strong>STAR Residential</strong> this August.
+              This portal was built by Group 4 (second-year AI &amp; Data Science undergraduates) to support offer-holders preparing for the <strong>Student Transition and Residential (STAR)</strong> event in August.
             </p>
             <p>
-              Starting university can feel daunting—especially if you have a disability, mental health condition, ADHD, autism, or it's your first time living away from home. We are here to answer whatever is on your mind. <strong>No question is too small or silly!</strong>
+              Starting university with a disability, neurodivergent condition, mental health challenge, or as a first-in-family student can involve many practical questions. You can ask about accommodation rooms, meal arrangements, quiet sensory spaces, or travel to Preston campus.
             </p>
             
             <div class="welcome-box">
-              <p><strong>🔒 Completely confidential:</strong> You don't need to log in or give your name. Everything is private, and answers link directly to approved UCLan pages so you can check details yourself.</p>
+              <p><strong>Confidentiality Notice:</strong> No account login is required. Questions are anonymised automatically and answers link directly to approved UCLan sources.</p>
             </div>
 
-            <p class="try-asking-lead">Here are some common things students ask first:</p>
+            <p class="try-asking-lead">Recommended initial queries:</p>
             <ul class="starter-questions">
-              <li><button type="button" class="text-prompt-btn" data-query="What is the STAR programme and when does it take place?">🗓️ When does the STAR programme take place?</button></li>
-              <li><button type="button" class="text-prompt-btn" data-query="Are the accommodation rooms during STAR en-suite and do I get my own bedroom?">🛏️ Do I get my own bedroom and bathroom?</button></li>
-              <li><button type="button" class="text-prompt-btn" data-query="How much does it cost to attend the STAR programme and are meals free?">💷 Are meals and rooms completely free?</button></li>
-              <li><button type="button" class="text-prompt-btn" data-query="What is an Inclusive Support Plan (ISP) and can I get extra exam time?">📝 How do I set up an Inclusive Support Plan (ISP)?</button></li>
+              <li><button type="button" class="text-prompt-btn" data-query="What is the STAR programme and when does it take place?">When does the STAR programme take place?</button></li>
+              <li><button type="button" class="text-prompt-btn" data-query="Are the accommodation rooms during STAR en-suite and do I get my own bedroom?">Do I get my own single bedroom and en-suite bathroom?</button></li>
+              <li><button type="button" class="text-prompt-btn" data-query="How much does it cost to attend the STAR programme and are meals free?">Are meals and accommodation completely free of charge?</button></li>
+              <li><button type="button" class="text-prompt-btn" data-query="What is an Inclusive Support Plan (ISP) and can I get extra exam time?">How do I establish an Inclusive Support Plan (ISP)?</button></li>
             </ul>
           </div>
         </div>
@@ -281,43 +261,42 @@
     </div>
 
     <!-- Live Speech Synthesis Audio Player Indicator -->
-    <div id="tts-player-indicator" class="tts-bar hidden" role="region" aria-label="Text to speech player">
+    <div id="tts-player-indicator" class="tts-bar hidden" role="region" aria-label="Speech synthesis playback bar">
       <div class="tts-info">
-        <span class="tts-speaker" aria-hidden="true">🔊</span>
+        <span class="tts-status-dot" aria-hidden="true"></span>
         <span id="tts-status-text">Reading answer aloud...</span>
       </div>
-      <button type="button" id="tts-stop-btn" class="tts-stop" title="Stop reading aloud">
-        ⏹️ Stop
+      <button type="button" id="tts-stop-btn" class="tts-stop" title="Stop speech synthesis">
+        Stop Audio
       </button>
     </div>
 
     <!-- Chat Input Form -->
     <div class="chat-input-area">
       <form id="chat-form" class="chat-form" action="/api/ask" method="post">
-        <label for="user-input" class="sr-only">Ask a question about the STAR programme</label>
+        <label for="user-input" class="sr-only">Enter your question regarding the STAR residential</label>
         
         <div class="input-wrapper">
           <textarea 
             id="user-input" 
             name="question" 
             class="chat-textarea" 
-            placeholder="Ask a question about the STAR residential, halls, food, or support..." 
+            placeholder="Type a question about accommodation, dining, quiet spaces, or arrival..." 
             rows="2" 
             maxlength="600"
             required></textarea>
             
-          <button type="submit" id="send-btn" class="send-button" title="Send question">
-            <span>Ask</span>
-            <span class="send-arrow" aria-hidden="true">➔</span>
+          <button type="submit" id="send-btn" class="send-button" title="Submit question">
+            <span>Submit</span>
           </button>
         </div>
       </form>
 
       <div class="input-footer">
         <span class="footer-privacy-tag">
-          <span aria-hidden="true">🔒</span> 100% Private · Names & emails are wiped automatically
+          Strict Anonymity: Personal names, phone numbers, and student IDs are stripped before processing.
         </span>
-        <span class="footer-key-hint">Press <strong>Enter</strong> to send · <strong>Shift + Enter</strong> for a new line</span>
+        <span class="footer-key-hint">Press <strong>Enter</strong> to send | <strong>Shift + Enter</strong> for a new line</span>
       </div>
     </div>
 
@@ -329,29 +308,28 @@
   <div class="modal-content">
     <div class="modal-header">
       <div class="modal-title-group">
-        <span class="modal-book" aria-hidden="true">📖</span>
         <h3 id="modal-title" class="modal-term-name">Term Definition</h3>
       </div>
-      <button type="button" id="modal-close-btn" class="modal-close" aria-label="Close definition dialog">✕</button>
+      <button type="button" id="modal-close-btn" class="modal-close" aria-label="Close definition dialog">Close</button>
     </div>
     <div class="modal-body">
       <div class="plain-english-block">
-        <span class="plain-badge">In Plain English:</span>
+        <span class="plain-badge">Plain English Explanation:</span>
         <p id="modal-simple-def" class="plain-definition"></p>
       </div>
 
       <div class="official-block">
-        <span class="official-badge">Official Meaning:</span>
+        <span class="official-badge">Official UCLan Meaning:</span>
         <p id="modal-official-def" class="official-definition"></p>
       </div>
 
       <div class="context-block">
-        <span class="context-badge">Why It Matters for STAR:</span>
+        <span class="context-badge">Relevance to the STAR Residential:</span>
         <p id="modal-context-note" class="context-note"></p>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" id="modal-ok-btn" class="btn-primary">Got it, thanks!</button>
+      <button type="button" id="modal-ok-btn" class="btn-primary">Dismiss</button>
     </div>
   </div>
 </div>

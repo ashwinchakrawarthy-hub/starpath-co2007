@@ -33,12 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (soundToggle) {
     soundToggle.setAttribute("aria-pressed", soundEnabled.toString());
-    soundToggle.innerHTML = soundEnabled ? `<span aria-hidden="true">🔔</span> Sound On` : `<span aria-hidden="true">🔕</span> Sound Off`;
+    soundToggle.textContent = soundEnabled ? "Audio Alert: On" : "Audio Alert: Off";
     soundToggle.addEventListener("click", () => {
       soundEnabled = !soundEnabled;
       localStorage.setItem("starpath-sound", soundEnabled.toString());
       soundToggle.setAttribute("aria-pressed", soundEnabled.toString());
-      soundToggle.innerHTML = soundEnabled ? `<span aria-hidden="true">🔔</span> Sound On` : `<span aria-hidden="true">🔕</span> Sound Off`;
+      soundToggle.textContent = soundEnabled ? "Audio Alert: On" : "Audio Alert: Off";
       announceToScreenReader(soundEnabled ? "Audio chime enabled" : "Audio chime muted");
       if (soundEnabled) playChimeTone(587.33, 0.1); // D5 test tone
     });
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const percent = Math.round((checked / total) * 100);
 
       if (checklistCounter) {
-        checklistCounter.textContent = checked === total ? `${checked} / ${total} packed! 🎉` : `${checked} / ${total} packed`;
+        checklistCounter.textContent = `${checked} / ${total} packed`;
       }
       if (packingProgress) {
         packingProgress.style.width = `${percent}%`;
@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
         announceToScreenReader("Response received.");
       } catch (err) {
         removeElement(loadingId);
-        appendErrorBubble("⚠️ We couldn't reach the student guide service right now. Please check your connection or try asking again.");
+        appendErrorBubble("Notice: Unable to reach the assistant service. Please check your network or try asking again.");
         console.error("Chat error:", err);
       } finally {
         if (sendBtn) sendBtn.disabled = false;
@@ -349,12 +349,12 @@ document.addEventListener("DOMContentLoaded", () => {
     row.innerHTML = `
       <div class="message-bubble bot-bubble">
         <div class="bubble-header">
-          <span class="bubble-author">⭐ STARPath Guide</span>
+          <span class="bubble-author">STARPath Assistant</span>
         </div>
         <div class="bubble-content">
           <div style="display:flex; align-items:center; gap:8px; color:var(--text-muted); font-size:0.9rem;">
             <span class="spinner" style="border-color:var(--text-light); border-top-color:var(--primary);"></span>
-            <span>Checking official UCLan guides...</span>
+            <span>Checking official UCLan guidance...</span>
           </div>
         </div>
       </div>
@@ -395,13 +395,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // PII Notice Badge
     let privacyTag = "";
     if (data.pii_detected) {
-      privacyTag = `<span class="tag-peer" style="font-size:0.7rem; padding:1px 6px;">🔒 Note: Personal details were masked</span>`;
+      privacyTag = `<span class="tag-meta" style="font-size:0.75rem; padding:2px 8px;">Personal details sanitized</span>`;
     }
 
     // Header
     const headerHtml = `
       <div class="bubble-header">
-        <span class="bubble-author">⭐ STARPath Guide</span>
+        <span class="bubble-author">STARPath Assistant</span>
         ${privacyTag}
         <span class="bubble-time">${getFormattedTime()}</span>
       </div>
@@ -412,10 +412,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (data.is_crisis) {
       crisisCardHtml = `
         <div class="crisis-box">
-          <h4>🚨 Urgent Student Support & Wellbeing Contacts</h4>
-          <p>It sounds like you may be going through a really difficult time. Please remember you are not alone, and there is kind, confidential help available right now:</p>
+          <h4>Urgent Student Support &amp; Wellbeing Contacts</h4>
+          <p>It sounds like you may be experiencing distress. Confidential support is available immediately through university and national helplines:</p>
           <ul class="crisis-contacts">
-            <li><strong>UCLan Student Wellbeing:</strong> 01772 893020 (Mon–Fri 9am–5pm)</li>
+            <li><strong>UCLan Student Wellbeing:</strong> 01772 893020 (Mon–Fri 9:00–17:00)</li>
             <li><strong>24/7 Crisis Text Line (Shout):</strong> Text <code>SHOUT</code> to <strong>85258</strong> (Free, 24/7)</li>
             <li><strong>Samaritans (24/7):</strong> Call <strong>116 123</strong> (Free call anytime)</li>
             <li><strong>UCLan Campus Security (24/7):</strong> 01772 892068</li>
@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (data.sources && data.sources.length > 0) {
       const srcBox = document.createElement("div");
       srcBox.className = "sources-card";
-      srcBox.innerHTML = `<span class="sources-title">📚 Verified UCLan Source:</span>`;
+      srcBox.innerHTML = `<span class="sources-title">Verified UCLan Source:</span>`;
 
       data.sources.forEach((s) => {
         if (s.title && s.url) {
@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
           link.href = s.url;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          link.innerHTML = `<span>${escapeHTML(s.title)}</span> ↗`;
+          link.innerHTML = `<span>${escapeHTML(s.title)}</span>`;
           srcBox.appendChild(link);
         }
       });
@@ -463,7 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const simplifyBtn = document.createElement("button");
       simplifyBtn.className = "bubble-action-btn";
       simplifyBtn.type = "button";
-      simplifyBtn.innerHTML = `<span>📝 Explain simply</span>`;
+      simplifyBtn.innerHTML = `<span>Explain simply</span>`;
       simplifyBtn.addEventListener("click", async () => {
         simplifyBtn.disabled = true;
         simplifyBtn.innerHTML = `<span>Simplifying...</span>`;
@@ -476,10 +476,10 @@ document.addEventListener("DOMContentLoaded", () => {
           const sData = await sRes.json();
           const pEl = bubble.querySelector(".bubble-content p");
           if (pEl) pEl.innerHTML = formatMarkdown(sData.simplified_text);
-          simplifyBtn.innerHTML = `✓ Simplified`;
+          simplifyBtn.innerHTML = `Simplified`;
           announceToScreenReader("Answer simplified into plain English.");
         } catch (e) {
-          simplifyBtn.innerHTML = `⚠️ Error`;
+          simplifyBtn.innerHTML = `Simplification error`;
         }
       });
       actionRow.appendChild(simplifyBtn);
@@ -490,19 +490,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const speakBtn = document.createElement("button");
       speakBtn.className = "bubble-action-btn";
       speakBtn.type = "button";
-      speakBtn.innerHTML = `<span>🔊 Read aloud</span>`;
+      speakBtn.innerHTML = `<span>Read aloud</span>`;
       speakBtn.addEventListener("click", () => {
         if (window.speechSynthesis.speaking) {
           window.speechSynthesis.cancel();
-          speakBtn.innerHTML = `<span>🔊 Read aloud</span>`;
+          speakBtn.innerHTML = `<span>Read aloud</span>`;
           return;
         }
         const textToRead = bubble.querySelector(".bubble-content").innerText.replace(/[\n\r]+/g, " ");
         const utterance = new SpeechSynthesisUtterance(textToRead);
         utterance.rate = 0.95;
-        utterance.onend = () => { speakBtn.innerHTML = `<span>🔊 Read aloud</span>`; };
+        utterance.onend = () => { speakBtn.innerHTML = `<span>Read aloud</span>`; };
         window.speechSynthesis.speak(utterance);
-        speakBtn.innerHTML = `<span>⏹ Stop</span>`;
+        speakBtn.innerHTML = `<span>Stop audio</span>`;
       });
       actionRow.appendChild(speakBtn);
     }
@@ -511,12 +511,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const copyBtn = document.createElement("button");
     copyBtn.className = "bubble-action-btn";
     copyBtn.type = "button";
-    copyBtn.innerHTML = `<span>📋 Copy</span>`;
+    copyBtn.innerHTML = `<span>Copy answer</span>`;
     copyBtn.addEventListener("click", () => {
       const plainText = bubble.querySelector(".bubble-content").innerText;
       navigator.clipboard.writeText(plainText).then(() => {
-        copyBtn.innerHTML = `<span>✓ Copied</span>`;
-        setTimeout(() => { copyBtn.innerHTML = `<span>📋 Copy</span>`; }, 2000);
+        copyBtn.innerHTML = `<span>Copied</span>`;
+        setTimeout(() => { copyBtn.innerHTML = `<span>Copy answer</span>`; }, 2000);
       });
     });
     actionRow.appendChild(copyBtn);
@@ -527,7 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const pill = document.createElement("button");
         pill.className = "glossary-chip";
         pill.type = "button";
-        pill.innerHTML = `📖 ${escapeHTML(item.term)}`;
+        pill.innerHTML = `Glossary: ${escapeHTML(item.term)}`;
         pill.addEventListener("click", () => {
           openGlossary(item.term, item.plain_definition, item.official_definition, item.context_note);
         });
@@ -590,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } catch (err) {
         if (llmAddsDesc) {
-          llmAddsDesc.innerHTML = `<p style="color:var(--danger);">⚠️ Could not complete evaluation run: ${err.message}</p>`;
+          llmAddsDesc.innerHTML = `<p style="color:var(--danger);">Evaluation error: ${err.message}</p>`;
         }
       } finally {
         runEvalBtn.disabled = false;
@@ -604,9 +604,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (copyShareBtn) {
     copyShareBtn.addEventListener("click", () => {
       navigator.clipboard.writeText(window.location.origin).then(() => {
-        copyShareBtn.textContent = "✓ Link Copied to Clipboard!";
+        copyShareBtn.textContent = "Portal Link Copied";
         setTimeout(() => {
-          copyShareBtn.textContent = "🔗 Copy Shareable Link";
+          copyShareBtn.textContent = "Copy Portal Link";
         }, 2200);
       });
     });
