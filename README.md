@@ -63,7 +63,7 @@ STARPath is configured for **100% free cloud deployment** without credit card re
    ```powershell
    cloudflared tunnel --url http://127.0.0.1:8000
    ```
-*See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for full step-by-step screenshots and cloud instructions.*
+*See [docs/STARPath_Architecture_and_Deployment.pdf](docs/STARPath_Architecture_and_Deployment.pdf) for full step-by-step screenshots and cloud instructions.*
 
 ---
 
@@ -121,14 +121,13 @@ GEMINI_MODEL=gemini-1.5-flash
 │   ├── test_rag.py            # Retrieval & honest refusal unit tests
 │   └── test_api.py            # FastAPI endpoint tests
 ├── docs/
-│   ├── ARCHITECTURE.md        # Technical architecture documentation
-│   ├── AI_USAGE.md            # Mandatory AI assistance and justification log
-│   ├── DEPLOYMENT.md          # Free cloud deployment step-by-step guide
-│   ├── MINUTES_OF_MEETINGS.md # 10 Teams meeting minutes across 4 project phases
-│   ├── PRESENTATION_SLIDES.md # Complete slide transcript & speaker notes
-│   ├── PROJECT_GUIDE_AND_MODULE_LEADER_BRIEF.md # Comprehensive guide & manual
+│   ├── STARPath_Minutes_of_Meetings.pdf             # 10 Teams meeting minutes with Ashwin assigning tasks (491 KB)
+│   ├── STARPath_Project_Guide_and_Brief.pdf         # Comprehensive student guide & manual (242 KB)
+│   ├── STARPath_Presentation_Slides.pdf             # 16-Slide presentation deck & speaker notes (206 KB)
+│   ├── STARPath_AI_Usage_and_Academic_Integrity.pdf # AI disclosure & academic integrity compliance (116 KB)
+│   ├── STARPath_Architecture_and_Deployment.pdf     # Technical architecture & cloud deployment guide (259 KB)
 │   ├── STARPath_Project_Guide_and_Module_Leader_Brief.docx # Native Word document (.docx)
-│   └── STARPath_Module_Leader_Presentation.pptx # 16:9 widescreen PowerPoint deck
+│   └── STARPath_Module_Leader_Presentation.pptx     # 16:9 widescreen PowerPoint deck (.pptx)
 ├── requirements.txt           # Pinned dependencies
 ├── .env.example               # Environment variables template
 ├── Procfile                   # Cloud web process entry point
@@ -204,11 +203,13 @@ The project follows a disciplined **4-Phase Agile Lifecycle** mapped to 8 Jira S
   - *Meetings:* MoM 09 (35 Benchmark Evaluation & Bug Triage), MoM 10 (Lab Rehearsal, Offline Contingency & Blackboard Sign-off)
   - *Jira Epics:* `STARP-104` (Testing & Benchmarking), `STARP-128` (Production & Cloud), `STARP-151` (Academic Documentation & Submissions)
 
-### Presentation, Guide & Meeting Artifacts:
-* **Word Document Guide (.docx):** [`docs/STARPath_Project_Guide_and_Module_Leader_Brief.docx`](docs/STARPath_Project_Guide_and_Module_Leader_Brief.docx) (Comprehensive step-by-step project guide, document storage directory, and speaking manual)
-* **Guide & Brief (Markdown):** [`docs/PROJECT_GUIDE_AND_MODULE_LEADER_BRIEF.md`](docs/PROJECT_GUIDE_AND_MODULE_LEADER_BRIEF.md) (Text-readable companion guide and presentation brief)
-* **PowerPoint Presentation File (.pptx):** [`docs/STARPath_Module_Leader_Presentation.pptx`](docs/STARPath_Module_Leader_Presentation.pptx) (16-slide 16:9 widescreen presentation deck ready to open in Microsoft PowerPoint or Google Slides)
-* **Slide Transcript & Speaker Notes:** [`docs/PRESENTATION_SLIDES.md`](docs/PRESENTATION_SLIDES.md) (Slide-by-slide markdown transcript, speaker timings, notes, and visual layouts)
-* **10 Microsoft Teams Meeting Minutes:** [`docs/MINUTES_OF_MEETINGS.md`](docs/MINUTES_OF_MEETINGS.md) (Comprehensive formal meeting minutes with agendas, technical debates, decisions, and action tables linked to Jira keys)
+### Coursework Submission Documents (Final PDFs & Presentation Decks):
+* **Minutes of Meetings PDF:** [`docs/STARPath_Minutes_of_Meetings.pdf`](docs/STARPath_Minutes_of_Meetings.pdf) (10 Teams meeting minutes across 4 project phases, with Ashwin assigning tasks across team members)
+* **Project Guide & Brief PDF:** [`docs/STARPath_Project_Guide_and_Brief.pdf`](docs/STARPath_Project_Guide_and_Brief.pdf) (Comprehensive coursework system manual, architecture breakdown, and demo instructions)
+* **Presentation Slides PDF:** [`docs/STARPath_Presentation_Slides.pdf`](docs/STARPath_Presentation_Slides.pdf) (Slide-by-slide transcript, visual layout descriptions, and timed speaker cues)
+* **AI Usage & Academic Integrity PDF:** [`docs/STARPath_AI_Usage_and_Academic_Integrity.pdf`](docs/STARPath_AI_Usage_and_Academic_Integrity.pdf) (Mandatory AI disclosure adhering to UCLan academic integrity guidelines)
+* **Architecture & Cloud Deployment PDF:** [`docs/STARPath_Architecture_and_Deployment.pdf`](docs/STARPath_Architecture_and_Deployment.pdf) (RAG architecture diagrams, data flow, and zero-cost cloud deployment guide)
+* **Word Document Guide (.docx):** [`docs/STARPath_Project_Guide_and_Module_Leader_Brief.docx`](docs/STARPath_Project_Guide_and_Module_Leader_Brief.docx) (Companion Word document)
+* **PowerPoint Presentation (.pptx):** [`docs/STARPath_Module_Leader_Presentation.pptx`](docs/STARPath_Module_Leader_Presentation.pptx) (16-slide 16:9 widescreen presentation deck)
 
-*All code in this project adheres to academic integrity regulations. AI usage in product development has been transparently acknowledged in [docs/AI_USAGE.md](docs/AI_USAGE.md).*
+*All code in this project adheres to academic integrity regulations. AI usage in product development has been transparently acknowledged in [docs/STARPath_AI_Usage_and_Academic_Integrity.pdf](docs/STARPath_AI_Usage_and_Academic_Integrity.pdf).*

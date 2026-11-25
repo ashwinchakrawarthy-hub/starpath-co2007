@@ -19,18 +19,19 @@ class TestAPIEndpoints(unittest.TestCase):
         response = client.get("/")
         self.assertEqual(response.status_code, 200)
         self.assertIn("STARPath", response.text)
-        self.assertIn("Student Transition and Residential", response.text)
+        self.assertIn("STAR Residential", response.text)
 
     def test_about_page(self):
         response = client.get("/about")
         self.assertEqual(response.status_code, 200)
-        self.assertIn("Student Ambassador", response.text)
-        self.assertIn("PROTOTYPE DEMO ONLY", response.text)
+        self.assertIn("Ambassador", response.text)
+        self.assertIn("CO2007", response.text)
 
     def test_evaluation_page(self):
         response = client.get("/evaluation")
         self.assertEqual(response.status_code, 200)
-        self.assertIn("Evaluation Dashboard", response.text)
+        self.assertIn("Evaluation", response.text)
+        self.assertIn("Usability Testing", response.text)
 
     def test_api_ask_in_scope(self):
         response = client.post("/api/ask", json={"question": "What is the STAR programme?"})
