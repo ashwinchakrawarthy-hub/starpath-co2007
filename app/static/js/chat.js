@@ -398,10 +398,17 @@ document.addEventListener("DOMContentLoaded", () => {
       privacyTag = `<span class="tag-meta" style="font-size:0.75rem; padding:2px 8px;">Personal details sanitized</span>`;
     }
 
+    // Provider Badge
+    let providerTag = "";
+    if (data.provider) {
+      providerTag = `<span class="tag-meta" style="font-size:0.75rem; padding:2px 8px;" title="Response model: ${escapeHTML(data.provider)}">${escapeHTML(data.provider)}</span>`;
+    }
+
     // Header
     const headerHtml = `
       <div class="bubble-header">
         <span class="bubble-author">STARPath Assistant</span>
+        ${providerTag}
         ${privacyTag}
         <span class="bubble-time">${getFormattedTime()}</span>
       </div>
