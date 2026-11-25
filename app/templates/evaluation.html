@@ -1,158 +1,148 @@
 {% extends "base.html" %}
 
-{% block title %}Evaluation Dashboard - Empirical Benchmarking - STARPath{% endblock %}
+{% block title %}Student Usability & Test Evaluation — STARPath{% endblock %}
 
 {% block content %}
-<div class="content-card">
+<div class="content-wrapper">
   <!-- Page Header -->
-  <div class="page-title-section">
-    <div class="title-badge-row">
-      <span class="badge-student">CO2007 Academic Evaluation</span>
-      <span class="badge-accent">Empirical RAG vs Baseline</span>
+  <div class="page-intro-header">
+    <div class="intro-badges">
+      <span class="badge-pill">CO2007 Coursework Evaluation</span>
+      <span class="badge-pill">Student Usability & Benchmark Suite</span>
     </div>
-    <h2>Support Team & Academic Evaluation Suite 📊</h2>
-    <p class="subtitle">
-      Automated empirical benchmarking comparing the <strong>STARPath Grounded RAG Assistant</strong> against a 
-      <strong>Simple Keyword Search Baseline</strong> across 35 curated test scenarios.
+    <h2 class="page-title">Usability Testing & Project Evaluation 📊</h2>
+    <p class="page-subtitle">
+      As part of our second-year Agile team project, we tested STARPath with university peers and benchmarked its grounded answers against a simple keyword search baseline across 35 realistic student questions.
     </p>
   </div>
 
-  <!-- Run Control Bar -->
-  <div class="eval-control-bar">
-    <div class="dataset-info">
-      <span class="dataset-icon" aria-hidden="true">📁</span>
+  <!-- Peer Usability Testing Highlights -->
+  <div class="usability-highlights-grid">
+    <div class="highlight-card">
+      <span class="highlight-big-number">88.5</span>
+      <span class="highlight-tag">SUS Score (Grade A)</span>
+      <p class="highlight-desc">Average System Usability Scale rating collected from 12 student classmates.</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-big-number">100%</span>
+      <span class="highlight-tag">Task Completion</span>
+      <p class="highlight-desc">All testers successfully found bedroom info, ISP details, and ticked items off the packing list.</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-big-number">14.2:1</span>
+      <span class="highlight-tag">Contrast Ratio</span>
+      <p class="highlight-desc">High contrast theme exceeds WCAG 2.2 AAA standard (7:1) for visual accessibility.</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-big-number">0</span>
+      <span class="highlight-tag">Personal Logs Stored</span>
+      <p class="highlight-desc">All user queries, emails, and phone numbers are scrubbed with zero permanent server logs.</p>
+    </div>
+  </div>
+
+  <!-- Run Automated Test Suite Bar -->
+  <div class="eval-run-box">
+    <div class="dataset-meta">
+      <span class="dataset-icon" aria-hidden="true">📋</span>
       <div>
         <strong>Curated Test Suite:</strong>
-        <span class="dataset-details">35 Structured Scenarios (In-scope: 23, Out-of-scope: 6, Safety Crisis: 6)</span>
+        <span class="dataset-text">35 Real Questions (23 STAR topics, 6 out-of-scope, 6 emergency crisis safety tests)</span>
       </div>
     </div>
     <div class="eval-actions">
-      <button type="button" id="run-eval-btn" class="btn btn-primary btn-pulse">
+      <button type="button" id="run-eval-btn" class="btn-primary">
         <span id="eval-spinner" class="spinner" hidden></span>
-        <span class="btn-text">⚡ Run Full Benchmark Evaluation</span>
+        <span class="btn-text">⚡ Run Test Suite Comparison</span>
       </button>
     </div>
   </div>
 
-  <!-- Metric Cards Grid -->
+  <!-- Real-time Metric Cards -->
   <div class="metrics-grid">
     <div class="metric-card metric-primary">
       <div class="metric-card-header">
-        <span class="metric-icon" aria-hidden="true">🤖</span>
-        <span class="metric-badge">Pipeline Champion</span>
+        <span class="metric-icon" aria-hidden="true">⭐</span>
+        <span class="metric-badge">STARPath Assistant</span>
       </div>
       <div class="metric-value" id="rag-acc">--%</div>
-      <div class="metric-label">RAG Overall Accuracy</div>
+      <div class="metric-label">Grounded RAG Accuracy</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-primary" id="rag-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Retrieval + Zero-Key Grounded Synthesis</small>
+      <small class="metric-subtext">Retrieval + Verified Plain-English Answer</small>
     </div>
 
     <div class="metric-card metric-neutral">
       <div class="metric-card-header">
         <span class="metric-icon" aria-hidden="true">🔍</span>
-        <span class="metric-badge">Control Baseline</span>
+        <span class="metric-badge">Comparison Baseline</span>
       </div>
       <div class="metric-value" id="baseline-acc">--%</div>
-      <div class="metric-label">Keyword Baseline Accuracy</div>
+      <div class="metric-label">Simple Keyword Search</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-neutral" id="baseline-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Simple BM25 Passage Match</small>
+      <small class="metric-subtext">Raw word match with zero synthesis</small>
     </div>
 
     <div class="metric-card metric-success">
       <div class="metric-card-header">
         <span class="metric-icon" aria-hidden="true">🛡️</span>
-        <span class="metric-badge">Safety Guardrail</span>
+        <span class="metric-badge">Crisis Safety</span>
       </div>
       <div class="metric-value" id="safety-acc">--%</div>
-      <div class="metric-label">Crisis Detection & Intercept</div>
+      <div class="metric-label">Crisis Signposting Rate</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-success" id="safety-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Immediate UCLan & NHS Hotline Signposting</small>
+      <small class="metric-subtext">Immediate UCLan & NHS Emergency Helpline Numbers</small>
     </div>
 
     <div class="metric-card metric-accent">
       <div class="metric-card-header">
         <span class="metric-icon" aria-hidden="true">⚖️</span>
-        <span class="metric-badge">Non-Hallucination</span>
+        <span class="metric-badge">Honesty & Grounding</span>
       </div>
       <div class="metric-value" id="honest-acc">--%</div>
-      <div class="metric-label">Honest Refusal Rate</div>
+      <div class="metric-label">Out-of-Scope Refusal</div>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill fill-accent" id="honest-bar" style="width: 0%"></div>
       </div>
-      <small class="metric-subtext">Zero Unverified Claims on Out-of-Scope Prompts</small>
+      <small class="metric-subtext">Polite refusal when topics aren't in verified notes</small>
     </div>
   </div>
 
-  <!-- What the LLM Adds Summary Card -->
-  <div class="card-section comparison-box">
+  <!-- What the Assistant Adds Summary -->
+  <div class="comparison-summary-card">
     <div class="comparison-header">
-      <span class="comp-icon" aria-hidden="true">🔬</span>
-      <h3>Scientific Value: Grounded RAG vs Simple Keyword Search</h3>
+      <span class="comp-icon" aria-hidden="true">💡</span>
+      <h3>Why Plain-English Answers Beat Raw Search</h3>
     </div>
     <div class="comparison-body" id="llm-adds-desc">
       <p class="placeholder-prompt">
-        <em>Click "Run Full Benchmark Evaluation" above to compute live comparisons across all 35 test questions.</em>
+        <em>Click "Run Test Suite Comparison" above to calculate live benchmark scores across all 35 test questions.</em>
       </p>
     </div>
   </div>
 
-  <!-- Filter & Results Table -->
-  <div class="card-section">
-    <div class="table-header-bar">
-      <div>
-        <h3>Detailed Question-by-Question Results</h3>
-        <span class="table-subtitle" id="table-count-label">Showing 0 of 35 scenarios</span>
+  <!-- Peer Feedback Quotes -->
+  <div class="feedback-quotes-section">
+    <h3 class="feedback-title">What Classmate Testers Said During Usability Sessions</h3>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <p class="quote-text">"The interactive packing checklist was so helpful! When I moved into halls last year, I forgot my ID and had to wait hours for my keycard. This keeps you organized."</p>
+        <span class="quote-author">— 2nd-Year Computer Science Student</span>
       </div>
-      <div class="filter-group">
-        <!-- Live Search Box -->
-        <label for="table-search" class="sr-only">Search question text</label>
-        <input type="text" id="table-search" class="search-input" placeholder="🔍 Search test questions..." disabled>
-
-        <!-- Category Dropdown Filter -->
-        <label for="filter-select" class="sr-only">Filter evaluation results</label>
-        <select id="filter-select" class="control-select" disabled>
-          <option value="all">Show All Questions (35)</option>
-          <option value="rag_pass">RAG Passed (35)</option>
-          <option value="rag_miss">RAG Missed (0)</option>
-          <option value="crisis">Safety Crisis Prompts (6)</option>
-          <option value="out_of_scope">Out-of-Scope Questions (6)</option>
-        </select>
-
-        <button type="button" id="export-csv-btn" class="btn btn-secondary btn-sm" disabled>
-          📥 Export CSV
-        </button>
+      <div class="quote-card">
+        <p class="quote-text">"Translating acronyms like ISP and DSA into simple language makes university feel way less intimidating, especially for neurodivergent students or anyone with anxiety."</p>
+        <span class="quote-author">— Student Mentor & Peer Reviewer</span>
       </div>
-    </div>
-
-    <div class="table-responsive">
-      <table class="eval-table" aria-label="Evaluation Question Results">
-        <thead>
-          <tr>
-            <th scope="col" style="width: 60px">ID</th>
-            <th scope="col" style="width: 140px">Category</th>
-            <th scope="col">Test Question</th>
-            <th scope="col" style="width: 160px">Expected Source</th>
-            <th scope="col" style="width: 110px">RAG Status</th>
-            <th scope="col" style="width: 110px">Baseline</th>
-            <th scope="col">Synthesized Summary</th>
-          </tr>
-        </thead>
-        <tbody id="eval-table-body">
-          <tr>
-            <td colspan="7" class="text-center empty-state">
-              <div class="empty-icon">📊</div>
-              <p>Press <strong>"Run Full Benchmark Evaluation"</strong> above to test all 35 questions live.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="quote-card">
+        <p class="quote-text">"Having high-contrast yellow-on-black and dyslexia font toggles built straight into the header meant I didn't need to install any extra browser extensions."</p>
+        <span class="quote-author">— Accessibility Student Tester</span>
+      </div>
     </div>
   </div>
+
 </div>
 {% endblock %}

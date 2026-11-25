@@ -3,92 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{{ app_name }} - {{ app_subtitle }}{% endblock %}</title>
-  <meta name="description" content="Accessible, privacy-first Q&A assistant for UCLan STAR Programme offer-holders. Developed by BSc (Hons) AI & Data Science students.">
+  <title>{% block title %}{{ app_name }} — UCLan Student Transition Guide{% endblock %}</title>
+  <meta name="description" content="Friendly, accessible guide created by second-year students to help incoming offer-holders prepare for the UCLan STAR Residential. Completely free, private, and jargon-free.">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
 </head>
 <body>
   <!-- Accessible Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link">Skip straight to content</a>
 
   <!-- ARIA Live Region for Screen Readers -->
   <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- Peer Student Project Banner -->
-  <div class="student-project-banner" role="complementary" aria-label="Student project banner">
-    <div class="banner-inner">
-      <div class="banner-team">
-        <span class="badge-student">🎓 Student-Built Innovation</span>
-        <span class="banner-text">CO2007 Agile Team Project · <strong>BSc (Hons) AI & Data Science</strong> (UCLan 2026/27)</span>
+  <!-- Friendly Student Project Notice Bar -->
+  <div class="top-notice-bar" role="complementary" aria-label="Student project banner">
+    <div class="notice-inner">
+      <div class="notice-left">
+        <span class="notice-badge">🎓 Student-Built Guide</span>
+        <span class="notice-text">Created for <strong>CO2007 (The Agile Professional)</strong> by 2nd-year AI & Data Science students</span>
       </div>
-      <div class="banner-meta">
-        <span class="campus-location"><span class="pulse-dot" aria-hidden="true"></span> 📍 Preston Campus · STAR Residential Aug 2027</span>
-        <span class="team-avatars" title="Team 4: Ashwin (Lead), Savi (PO), Golem (AI Architect), Hafsah (UI/UX)">
-          <span class="avatar-pill" title="Ashwin Chakrawarthy - Team Lead">AC</span>
-          <span class="avatar-pill" title="Savi Singh - Product Owner">SS</span>
-          <span class="avatar-pill" title="Md Mahin (Golem) - AI Architect">MM</span>
-          <span class="avatar-pill" title="Hafsah Afzal - UI/UX & QA">HA</span>
+      <div class="notice-right">
+        <span class="campus-tag">📍 Preston Campus · STAR Residential 2027</span>
+        <span class="team-initials" title="Team: Ashwin (Lead), Savi (Content), Mahin (Search), Hafsah (Design)">
+          <span class="initial-pill" title="Ashwin Chakrawarthy — Team Lead">AC</span>
+          <span class="initial-pill" title="Savi Singh — Content Lead">SS</span>
+          <span class="initial-pill" title="Md Mahin (Golem) — Search Lead">MM</span>
+          <span class="initial-pill" title="Hafsah Afzal — UI & Testing">HA</span>
         </span>
       </div>
     </div>
   </div>
 
-  <!-- Main Header -->
-  <header class="app-header" role="banner">
+  <!-- Main Collegiate Header -->
+  <header class="site-header" role="banner">
     <div class="header-inner">
-      <!-- Brand Logo & Title -->
-      <a href="/" class="brand-link" aria-label="STARPath Home">
+      <!-- Brand & Title -->
+      <a href="/" class="brand-link" aria-label="STARPath Homepage">
         <div class="brand">
-          <div class="brand-logo-container">
-            <span class="brand-logo" aria-hidden="true">⭐</span>
-            <div class="logo-glow" aria-hidden="true"></div>
-          </div>
-          <div class="brand-text">
-            <div class="title-row">
-              <h1 class="brand-title">{{ app_name }}</h1>
-              <span class="version-tag">v1.0 Ready</span>
+          <div class="brand-crest" aria-hidden="true">⭐</div>
+          <div class="brand-info">
+            <div class="brand-title-row">
+              <span class="brand-name">STARPath</span>
+              <span class="brand-tag">UCLan Student Guide</span>
             </div>
-            <p class="brand-subtitle">{{ app_subtitle }} · <span class="tag-uclan">Inclusive Support</span></p>
+            <p class="brand-tagline">Friendly, jargon-free support for the STAR Residential</p>
           </div>
         </div>
       </a>
 
-      <!-- Navigation -->
+      <!-- Navigation Tabs -->
       <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-        <a href="/" class="nav-link {% if request.url.path == '/' %}active{% endif %}">
+        <a href="/" class="nav-item {% if request.url.path == '/' %}active{% endif %}">
           <span class="nav-icon" aria-hidden="true">💬</span>
-          <span>Assistant</span>
+          <span>Ask Questions</span>
         </a>
-        <a href="/about" class="nav-link {% if request.url.path == '/about' %}active{% endif %}">
-          <span class="nav-icon" aria-hidden="true">🤝</span>
-          <span>About & Ambassadors</span>
+        <a href="/about" class="nav-item {% if request.url.path == '/about' %}active{% endif %}">
+          <span class="nav-icon" aria-hidden="true">📍</span>
+          <span>Campus & Team</span>
         </a>
-        <a href="/evaluation" class="nav-link {% if request.url.path == '/evaluation' %}active{% endif %}">
-          <span class="nav-icon" aria-hidden="true">📊</span>
-          <span>Evaluation Dashboard</span>
+        <a href="/evaluation" class="nav-item {% if request.url.path == '/evaluation' %}active{% endif %}">
+          <span class="nav-icon" aria-hidden="true">📋</span>
+          <span>Student Usability Tests</span>
         </a>
       </nav>
 
       <!-- Accessibility Toolbar -->
-      <div class="accessibility-controls" aria-label="Accessibility & Comfort Settings">
-        <!-- Audio Chime Toggle -->
-        <button id="sound-toggle" class="control-btn" type="button" aria-pressed="false" title="Toggle audio chime feedback">
+      <div class="accessibility-bar" aria-label="Reading & Comfort Settings">
+        <!-- Chime Sound Toggle -->
+        <button id="sound-toggle" class="toolbar-btn" type="button" aria-pressed="false" title="Play soft sound when response arrives">
           <span aria-hidden="true">🔔</span> Sound
         </button>
 
         <!-- Theme Picker -->
         <label for="theme-select" class="sr-only">Display Theme</label>
-        <select id="theme-select" class="control-select" title="Choose display theme for vision comfort">
-          <option value="default">🎨 Theme: UCLan Classic</option>
-          <option value="high-contrast">👁️ High Contrast (AAA 14:1)</option>
-          <option value="colorblind">🔷 Colour-Blind Safe</option>
-          <option value="dark">🌙 Dark Mode</option>
+        <select id="theme-select" class="toolbar-select" title="Change color theme for comfortable reading">
+          <option value="default">🎨 Theme: Classic Light</option>
+          <option value="uclan">🏛️ UCLan Crimson & Navy</option>
+          <option value="high-contrast">👁️ High Contrast (AAA)</option>
+          <option value="dark">🌙 Dark / Night Mode</option>
         </select>
 
         <!-- Font Size Picker -->
-        <label for="font-size-select" class="sr-only">Text Size</label>
-        <select id="font-size-select" class="control-select" title="Adjust text size">
+        <label for="font-size-select" class="sr-only">Font Size</label>
+        <select id="font-size-select" class="toolbar-select" title="Change text size">
           <option value="small">A- Small</option>
           <option value="medium" selected>A Standard</option>
           <option value="large">A+ Large</option>
@@ -96,65 +93,62 @@
         </select>
 
         <!-- Dyslexia Font Toggle -->
-        <button id="dyslexia-toggle" class="control-btn" type="button" aria-pressed="false" title="Toggle dyslexia-friendly font">
+        <button id="dyslexia-toggle" class="toolbar-btn" type="button" aria-pressed="false" title="Switch to a dyslexia-friendly font">
           📖 Dyslexia Font
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main id="main-content" class="main-container" role="main">
+  <!-- Main Content Container -->
+  <main id="main-content" class="main-body" role="main">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Human-Centred Footer -->
-  <footer class="app-footer" role="contentinfo">
+  <!-- Thoughtful Human Footer -->
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-col">
+      <div class="footer-columns">
+        <div class="footer-col about-col">
           <div class="footer-brand">
-            <span class="brand-logo-small">⭐</span>
-            <strong>STARPath</strong>
+            <span class="footer-star" aria-hidden="true">⭐</span>
+            <strong>STARPath Guide</strong>
           </div>
-          <p class="footer-desc">
-            An accessible, human-centred AI companion built by undergraduate students to empower disabled, neurodivergent, and anxious offer-holders transitioning to university.
+          <p class="footer-about">
+            A student project created for <strong>CO2007 (The Agile Professional)</strong> at the University of Central Lancashire. Made with care to take the mystery and stress out of starting university.
           </p>
-          <div class="footer-badges">
-            <span class="pill-mini">WCAG 2.2 AA</span>
-            <span class="pill-mini">Zero PII Log</span>
-            <span class="pill-mini">100% Grounded</span>
+          <div class="privacy-badges">
+            <span class="safe-badge">🔒 100% Anonymous</span>
+            <span class="safe-badge">📚 Real UCLan Sources</span>
+            <span class="safe-badge">♿ WCAG 2.2 AA</span>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4 class="footer-heading">Agile Student Team</h4>
-          <ul class="footer-team-list">
-            <li><strong>Ashwin Chakrawarthy</strong> · Scrum Lead & Git</li>
-            <li><strong>Savi Singh</strong> · Product Owner & Requirements</li>
-            <li><strong>Md Mahin (Golem)</strong> · Grounded AI Architect</li>
-            <li><strong>Hafsah Afzal</strong> · UI/UX & QA Engineer</li>
+        <div class="footer-col team-col">
+          <h4>Created By Students, For Students</h4>
+          <ul class="team-list">
+            <li><strong>Ashwin Chakrawarthy</strong> · Team Lead & Backend</li>
+            <li><strong>Savi Singh</strong> · Research & Content Lead</li>
+            <li><strong>Md Mahin (Golem)</strong> · Search & Retrieval</li>
+            <li><strong>Hafsah Afzal</strong> · UI/UX & Testing Lead</li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h4 class="footer-heading">Immediate Human Support</h4>
-          <p class="footer-support-text">
-            STARPath never replaces compassionate human care. If you need assistance:
-          </p>
-          <ul class="footer-contact-list">
+        <div class="footer-col help-col">
+          <h4>Real Human Support & Wellbeing</h4>
+          <p class="help-desc">STARPath is a student guide. For official university help or if you're feeling down:</p>
+          <ul class="contacts-list">
             <li><strong>Inclusive Support:</strong> <a href="mailto:inclusivesupport@uclan.ac.uk">inclusivesupport@uclan.ac.uk</a></li>
-            <li><strong>Student Wellbeing:</strong> 01772 893020</li>
-            <li><strong>24/7 Campus Security:</strong> 01772 892068</li>
+            <li><strong>UCLan Student Wellbeing:</strong> 01772 893020</li>
+            <li><strong>24/7 Crisis Support (Shout):</strong> Text <code>SHOUT</code> to <strong>85258</strong></li>
+            <li><strong>Campus Security (24/7):</strong> 01772 892068</li>
           </ul>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <p>
-          © 2026/27 <strong>Group 4 (Agile STAR)</strong> · CO2007 The Agile Professional · University of Central Lancashire.
-          Grounding source snapshot: 12 Nov 2026.
-        </p>
+      <div class="footer-bottom-bar">
+        <p>© 2026/27 <strong>Group 4 (Agile STAR)</strong> · BSc (Hons) Artificial Intelligence & Data Science · University of Central Lancashire.</p>
+        <p class="footer-subtext">All answers are checked against official UCLan Student Services and Accommodation guides.</p>
       </div>
     </div>
   </footer>
